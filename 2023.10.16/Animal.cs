@@ -11,6 +11,10 @@ namespace _2023._10._16
         public string Species { get; set; }
         List<string> AcceptableCropTypes = new List<string>();
 
+        public Animal(string species, string name) : base(name)
+        {
+            this.Species = species;
+        }
 
         public override string GetDescription()
         {

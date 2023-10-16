@@ -8,6 +8,7 @@ namespace _2023._10._16
 {
     internal class AnimalManager
     {
+        List<Animal> animals = new List<Animal>();
         public void AnimalMenu(Crop[], Worker[], FarmBuilding[])
         {
             bool status = true;
@@ -59,7 +60,7 @@ namespace _2023._10._16
 
         private bool AddAnimal(FarmBuilding farmbuilding)
         {
-            return true;
+            animals.Add(Animal )
         }
 
         private bool SwitchBuilding(Animal animal, FarmBuilding farmbuiding)

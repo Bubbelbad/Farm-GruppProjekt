@@ -13,7 +13,7 @@ namespace _2023._10._16
 
         public static int NextId = 1;
 
-        public Entity(int id, string name)
+        public Entity(string name)
         {
             this.Id = NextId++;
             this.Name = name;

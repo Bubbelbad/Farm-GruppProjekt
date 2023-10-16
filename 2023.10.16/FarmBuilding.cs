@@ -10,6 +10,11 @@ namespace _2023._10._16
     {
         Animal animal = new Animal();
 
+        public FarmBuilding(string name) : base(name)
+        {
+
+        }
+
         private int Capacity { get; set; }
 
         public bool IsFull()
