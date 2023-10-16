@@ -30,10 +30,10 @@ namespace _2023._10._16
             }
         }
 
-        public void ListAnimals()
-        {
-            foreach (Animal animal in animalList)
-        }
+      //  public void ListAnimals()
+      //  {
+      //      foreach (Animal animal in animalList)
+      //  }
 
         public void AddAnimal(Animal animal)
         {
