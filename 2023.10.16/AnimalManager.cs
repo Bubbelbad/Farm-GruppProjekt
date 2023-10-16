@@ -14,26 +14,68 @@ namespace _2023._10._16
             int answer = 0;
             while (status)
             {
-                Console.WriteLine("Vad vill du välja?");
+                Console.WriteLine("Vad vill du välja?" +
+                                  "1. View Animals" +
+                                  "2. Add Animal" +
+                                  "3. SwitchBuilding " +
+                                  "4. Remove Animal" +
+                                  "5. Feed Animals");
                 try
                 {
-                    
+                    answer = int.Parse(Console.ReadLine());
+                    switch (answer)
+                    {
+                        case 1:
+                            ViewAnimals();
+                            break;
+                        case 2:
+                            AddAnimal();
+                            break;
+                        case 3:
+                            SwitchBuilding();
+                            break;
+                        case 4:
+                            RemoveAnimal();
+                            break;
+                        case 5:
+                            FeedAnimals();
+                            break;
+                        default:
+                            Console.WriteLine("Please write a number between 1 - 5");
+                            break;
+                    }
                 }
                 catch
                 {
-
+                    Console.WriteLine("Please write a number between 1 - 5");
                 }
             }
         }
 
-        public void ViewAnimals()
+        private void ViewAnimals()
         {
 
         }
 
-        public bool AddAnimal(FarmBuiding)
+        private bool AddAnimal(FarmBuilding farmbuilding)
+        {
+            return true;
+        }
+
+        private bool SwitchBuilding(Animal animal, FarmBuilding farmbuiding)
+        {
+            return true;
+        }
+
+        private void RemoveAnimal(int num)
         {
 
         }
+
+        private void FeedAnimals(string food, Crop crop)
+        {
+
+        }
+
     }
 }

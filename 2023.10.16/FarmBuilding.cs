@@ -29,7 +29,7 @@ namespace _2023._10._16
 
         }
 
-        public void AddAnimal(Animal)
+        public void AddAnimal(Animal animal)
         {
 
         }

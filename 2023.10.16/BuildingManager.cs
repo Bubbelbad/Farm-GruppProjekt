@@ -8,5 +8,29 @@ namespace _2023._10._16
 {
     internal class BuildingManager
     {
+        public void BuildingMenu()
+        {
+
+        }
+
+        private void ViewBuildings()
+        {
+
+        }
+
+        private void AddBuilding()
+        {
+
+        }
+
+        private bool RemoveBuilding(int num)
+        {
+            return true;
+        }
+
+        public List<FarmBuilding> GetBuildings()
+        {
+            return new List<FarmBuilding>();
+        }
     }
 }
