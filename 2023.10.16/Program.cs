@@ -5,7 +5,8 @@
         static void Main(string[] args)
         {
             Farm farm = new Farm();
-
+            WorkManager workManager = new WorkManager();
+            workManager.workManager();
         }
     }
 }

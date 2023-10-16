@@ -11,7 +11,7 @@ namespace _2023._10._16
 
         public string cropTyp { get; set; }
         private int quantity { get; set; }
-        public Crop(string cropTyp, int quantit)
+        public Crop(string name,string cropTyp, int quantit):base(name)
         {
             this.cropTyp = cropTyp;
             this.quantity = quantit;
