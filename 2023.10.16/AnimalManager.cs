@@ -44,7 +44,7 @@ namespace _2023._10._16
                             break;
                         case 2:
                             Console.Clear();
-                            Console.WriteLine("To what building would you like to add the animal?");
+                         //  AddAnimal
                             string farmBuilding = Console.ReadLine();
                             break;
                         case 3:

@@ -42,7 +42,7 @@ namespace _2023._10._16
                             Console.WriteLine("What Building would you like to remove?\n");
                             ViewBuildings();
                             int answer2 = int.Parse(Console.ReadLine());
-                            RemoveBuilding(answer2);
+                            bool building = RemoveBuilding(answer2);     //Här måste jag göra någonting med boolen!
                             break;
                         case 4:
                             Console.Clear();
@@ -67,6 +67,10 @@ namespace _2023._10._16
             {
                 Console.WriteLine(building.GetDescription());
             }
+            if (listOfFarmBuildings.Count == 0)
+            {
+                Console.WriteLine("There are not yet buildings to display\n");
+            }
         }
 
         private void AddBuilding()
@@ -88,7 +92,11 @@ namespace _2023._10._16
                 if (building.Id == num)
                 {
                     listOfFarmBuildings.Remove(building);
+                    Console.WriteLine($"The building with Id: {num} was removed.\n");
+                    Console.WriteLine("Click to continue...");
+                    Console.ReadLine();
                     return true;
+                    
                 }
             }
             return false;

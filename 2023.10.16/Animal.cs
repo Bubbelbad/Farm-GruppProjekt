@@ -29,7 +29,7 @@ namespace _2023._10._16
             {
                 if (crop.cropTyp == acceptableCrop)
                 {
-
+                    //to be continued. 
                 }
             }
             
