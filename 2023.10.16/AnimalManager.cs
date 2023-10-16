@@ -43,7 +43,9 @@ namespace _2023._10._16
                             Console.ReadLine();
                             break;
                         case 2:
-                            //AddAnimal();
+                            Console.Clear();
+                            Console.WriteLine("To what building would you like to add the animal?");
+                            string farmBuilding = Console.ReadLine();
                             break;
                         case 3:
                          //   SwitchBuilding();
@@ -80,6 +82,12 @@ namespace _2023._10._16
 
         private bool AddAnimal(FarmBuilding farmbuilding)
         {
+            Console.WriteLine("What species of animal do you want to add?");
+            string species = Console.ReadLine();
+            Console.WriteLine("What is the animals name?");
+            string name = Console.ReadLine();
+            listOfAnimals.Add(new Animal(species, name));
+            farmbuilding.AddAnimal(listOfAnimals[-1]);
             return true;
            
         }

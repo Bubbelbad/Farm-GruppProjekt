@@ -22,7 +22,7 @@ namespace _2023._10._16
             bool status = true;
             while (status)
             {
-                Console.WriteLine("Choose one of the following: \n\n" +
+                Console.WriteLine("Choose one of the following menus: \n\n" +
                                   "1. Building Menu\n" +
                                   "2. Worker Menu\n" +
                                   "3. Crop Menu\n" +

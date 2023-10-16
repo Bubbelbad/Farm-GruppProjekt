@@ -10,7 +10,7 @@ namespace _2023._10._16
     {
         public string Species { get; set; }
 
-        private List<string> AcceptableCropTypes = new List<string>();
+        private List<string> AcceptableCropTypes = new List<string> { "Grass", "Leaves", "Potatoes", "Cheeseballs" };
 
 
         public Animal(string species, string name) : base(name)
@@ -25,7 +25,14 @@ namespace _2023._10._16
 
         public void Feed(Crop crop)
         {
+            foreach (string acceptableCrop in AcceptableCropTypes)
+            {
+                if (crop.cropTyp == acceptableCrop)
+                {
 
+                }
+            }
+            
         }
     }
 }

@@ -12,11 +12,15 @@ namespace _2023._10._16
 
         private int Capacity { get; set; }
 
-        public FarmBuilding(string name) : base(name)
+        public FarmBuilding(int capacity, string name) : base(name)
         {
-
+            this.Capacity = capacity;
         }
 
+        public override string GetDescription()
+        {
+            return $"Id: {Id} \nName: {Name} \nCapacity: {Capacity}\n";
+        }
 
         public bool IsFull()
         {
