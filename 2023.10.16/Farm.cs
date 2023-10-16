@@ -11,8 +11,11 @@ namespace _2023._10._16
 
         public BuildingManager buildingManager = new BuildingManager();
         public AnimalManager animalManager = new AnimalManager();
-        public CropManager cropManager = new CropManager();
-        public WorkManager workManager = new WorkManager();
+
+        public Farm()
+        {
+            MainMenu();
+        }
 
         public void MainMenu()
         {
@@ -40,10 +43,10 @@ namespace _2023._10._16
 
                             break;
                         case 4:
-
+                            animalManager.AnimalMenu();
                             break;
                         default:
-                            Console.WriteLine("Vänligen skriv en siffra mellan 1 - 3");
+                            Console.WriteLine("Vänligen skriv en siffra mellan 1 - 4");
                             break;
                     }
                 }

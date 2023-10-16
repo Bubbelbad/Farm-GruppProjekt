@@ -20,7 +20,7 @@ namespace _2023._10._16
 
         public override string GetDescription()
         {
-            return $"Species: {Species} Name: {Name} Id: {Id}";
+            return $"Id: {Id}\nSpecies: {Species} \nName: {Name} \n";
         }
 
         public void Feed(Crop crop)

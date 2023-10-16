@@ -8,65 +8,81 @@ namespace _2023._10._16
 {
     internal class AnimalManager
     {
-        List<Animal> animals = new List<Animal>();
+        List<Animal> listOfAnimals = new List<Animal>();
 
-     //   public void AnimalMenu(Crop[], Worker[], FarmBuilding[])
-     //   {
-     //       bool status = true;
-     //       int answer = 0;
-     //       while (status)
-     //       {
-     //           Console.WriteLine("Vad vill du välja?" +
-     //                             "1. View Animals" +
-     //                             "2. Add Animal" +
-     //                             "3. SwitchBuilding " +
-     //                             "4. Remove Animal" +
-     //                             "5. Feed Animals");
-     //           try
-     //           {
-     //               answer = int.Parse(Console.ReadLine());
-     //               switch (answer)
-     //               {
-     //                   case 1:
-     //                       ViewAnimals();
-     //                       break;
-     //                   case 2:
-     //                     //  AddAnimal();
-     //                       break;
-     //                   case 3:
-     //                    //   SwitchBuilding();
-     //                       break;
-     //                   case 4:
-     //                    //   RemoveAnimal();
-     //                       break;
-     //                   case 5:
-     //                      // FeedAnimals();
-     //                       break;
-     //                   default:
-     //                       Console.WriteLine("Please write a number between 1 - 5");
-     //                       break;
-     //               }
-     //           }
-     //           catch
-     //           {
-     //               Console.WriteLine("Please write a number between 1 - 5");
-     //           }
-     //       }
-     //   }
-
-        private void ViewAnimals()
+        public AnimalManager()
         {
-            for (int i = 0; i < animals.Count; i++)
+            listOfAnimals.Add(new Animal("Sheep", "Rosita"));
+            listOfAnimals.Add(new Animal("Cow", "Klarabella"));
+        }
+
+
+        public void AnimalMenu()
+        {
+            bool status = true;
+            int answer = 0;
+            while (status)
             {
-                animals[i].GetDescription();
+                Console.Clear();
+                Console.WriteLine("What would you like to do?\n\n" +
+                                  "1. View Animals\n" +
+                                  "2. Add Animal\n" +
+                                  "3. SwitchBuilding\n" +
+                                  "4. Remove Animal\n" +
+                                  "5. Feed Animals\n" +
+                                  "6. Back to Menu");
+                try
+                {
+                    answer = int.Parse(Console.ReadLine());
+                    switch (answer)
+                    {
+                        case 1:
+                            Console.Clear();
+                            ViewAnimals();
+                            Console.WriteLine("Click to continue...");
+                            Console.ReadLine();
+                            break;
+                        case 2:
+                            //AddAnimal();
+                            break;
+                        case 3:
+                         //   SwitchBuilding();
+                            break;
+                        case 4:
+                         //   RemoveAnimal();
+                            break;
+                        case 5:
+                           // FeedAnimals();
+                            break;
+                        case 6:
+                            status = false;
+                            Console.Clear();
+                            break;
+                        default:
+                            Console.WriteLine("Please write a number between 1 - 5");
+                            break;
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Please write a number between 1 - 5");
+                }
             }
         }
 
-      //  private bool AddAnimal(FarmBuilding farmbuilding)
-      //  {
-      //      if (farmbuilding. == null)
-      //      animals.Add(Animal)
-      //  }
+        private void ViewAnimals()
+        {
+            for (int i = 0; i < listOfAnimals.Count; i++)
+            {
+                Console.WriteLine(listOfAnimals[i].GetDescription()); 
+            }
+        }
+
+        private bool AddAnimal(FarmBuilding farmbuilding)
+        {
+            return true;
+           
+        }
 
         private bool SwitchBuilding(Animal animal, FarmBuilding farmbuiding)
         {
