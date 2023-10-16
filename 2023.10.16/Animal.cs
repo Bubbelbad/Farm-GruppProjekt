@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace _2023._10._16
 {
-    internal class Animal
+    internal class Animal : Entity
     {
+        public string Species { get; set; }
+        List<string> AcceptableCropTypes = new List<string>();
+
+
+        public override string GetDescription()
+        {
+            return $"Species: {Species} Name: {Name} Id: {Id}";
+        }
+
+        public void Feed(Crop)
+        {
+
+        }
     }
 }

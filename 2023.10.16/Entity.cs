@@ -12,10 +12,9 @@ namespace _2023._10._16
         protected string Name { get; set; }
 
 
-
-        public void GetDescription()
+        public virtual string GetDescription()
         {
-            Console.WriteLine($"Id: {Id} Name: {Name}");
+            return $"Id: {Id} Name: {Name}";
         }
     }
 }
