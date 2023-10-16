@@ -9,7 +9,9 @@ namespace _2023._10._16
     internal class Animal : Entity
     {
         public string Species { get; set; }
-        List<string> AcceptableCropTypes = new List<string>();
+
+        private List<string> AcceptableCropTypes = new List<string>();
+
 
         public Animal(string species, string name) : base(name)
         {
@@ -21,7 +23,7 @@ namespace _2023._10._16
             return $"Species: {Species} Name: {Name} Id: {Id}";
         }
 
-        public void Feed(Crop)
+        public void Feed(Crop crop)
         {
 
         }

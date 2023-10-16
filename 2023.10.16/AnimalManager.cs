@@ -9,6 +9,7 @@ namespace _2023._10._16
     internal class AnimalManager
     {
         List<Animal> animals = new List<Animal>();
+
         public void AnimalMenu(Crop[], Worker[], FarmBuilding[])
         {
             bool status = true;
@@ -55,13 +56,17 @@ namespace _2023._10._16
 
         private void ViewAnimals()
         {
-
+            for (int i = 0; i < animals.Count; i++)
+            {
+                animals[i].GetDescription();
+            }
         }
 
-        private bool AddAnimal(FarmBuilding farmbuilding)
-        {
-            animals.Add(Animal )
-        }
+      //  private bool AddAnimal(FarmBuilding farmbuilding)
+      //  {
+      //      if (farmbuilding. == null)
+      //      animals.Add(Animal)
+      //  }
 
         private bool SwitchBuilding(Animal animal, FarmBuilding farmbuiding)
         {
