@@ -8,15 +8,22 @@ namespace _2023._10._16
 {
     internal class Farm
     {
+
+        public BuildingManager buildingManager = new BuildingManager();
+        public AnimalManager animalManager = new AnimalManager();
+        public CropManager cropManager = new CropManager();
+        public WorkManager workManager = new WorkManager();
+
         public void MainMenu()
         {
             bool status = true;
             while (status)
             {
-                Console.WriteLine("Här kommer vi att lägga till en flervalsmeny: \n\n" +
-                                  "Val nummer 1                           [1]\n" +
-                                  "Val nummer 2                           [2]\n" +
-                                  "Val nummer 3                           [3]\n");
+                Console.WriteLine("Choose one of the following: \n\n" +
+                                  "1. Building Menu\n" +
+                                  "2. Worker Menu\n" +
+                                  "3. Crop Menu\n" +
+                                  "4. Animal Menu");
 
                 try
                 {
@@ -24,12 +31,15 @@ namespace _2023._10._16
                     switch (answer)
                     {
                         case 1:
-
+                            buildingManager.BuildingMenu();
                             break;
                         case 2:
-
+                            
                             break;
                         case 3:
+
+                            break;
+                        case 4:
 
                             break;
                         default:

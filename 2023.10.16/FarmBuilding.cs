@@ -8,9 +8,15 @@ namespace _2023._10._16
 {
     internal class FarmBuilding : Entity
     {
-        Animal animal = new Animal();
+        List<Animal> animalList = new List<Animal>();  
 
         private int Capacity { get; set; }
+
+        public FarmBuilding(string name) : base(name)
+        {
+
+        }
+
 
         public bool IsFull()
         {
@@ -26,12 +32,12 @@ namespace _2023._10._16
 
         public void ListAnimals()
         {
-
+            foreach (Animal animal in animalList)
         }
 
-        public void AddAnimal(Animal)
+        public void AddAnimal(Animal animal)
         {
-
+            animalList.Add(animal);
         }
 
         public void RemoveAnimal(int num)
