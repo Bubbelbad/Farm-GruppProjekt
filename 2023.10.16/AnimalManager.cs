@@ -12,8 +12,7 @@ namespace _2023._10._16
 
         public AnimalManager()
         {
-            listOfAnimals.Add(new Animal("Sheep", "Rosita"));
-            listOfAnimals.Add(new Animal("Cow", "Klarabella"));
+
         }
 
 
@@ -45,27 +44,39 @@ namespace _2023._10._16
                             break;
 
 
+
+
                         case 2:
                             Console.Clear();
-                            Console.WriteLine("What farmbuilding do you want to add the animal to?\n" +
-                                              "Enter farm Id: \n");
-
-                            foreach (FarmBuilding farm in farmBuilding) //Showing the available farms
+                            if (farmBuilding.Count == 0)
                             {
-                                Console.WriteLine(farm.GetDescription());
+                                Console.WriteLine("There are no farms to put your animal into. \n" +
+                                                  "First you need to add a farm from buildings menu!\n\n" +
+                                                  "Click to continue...");
+                                Console.ReadLine();
                             }
-
-                            int farmId = int.Parse(Console.ReadLine());
-                            FarmBuilding farmChoice = null;
-                            foreach (FarmBuilding farm in farmBuilding) //If the choice by Id exists, we go to function AddAnimal()
+                            else
                             {
-                                if (farm.Id == farmId)
+                                Console.WriteLine("What farmbuilding do you want to add the animal to?\n" +
+                                              "Enter farm Id: \n");
+                                foreach (FarmBuilding farm in farmBuilding) //Showing the available farms
                                 {
-                                    farmChoice = farm;
-                                    AddAnimal(farmChoice);
+                                    Console.WriteLine(farm.GetDescription());
+                                }
+                                int farmId = int.Parse(Console.ReadLine());
+                                FarmBuilding farmChoice = null;
+                                foreach (FarmBuilding farm in farmBuilding) //If the choice by Id exists, we go to function AddAnimal()
+                                {
+                                    if (farm.Id == farmId)
+                                    {
+                                        farmChoice = farm;
+                                        AddAnimal(farmChoice);
+                                    }
                                 }
                             }
                             break;
+
+
 
 
                         case 3:
@@ -96,18 +107,32 @@ namespace _2023._10._16
                                 }
                             }
                             SwitchBuilding(animalChoice, farmChoice2);
+                            break;
 
-                            break;
+
+
                         case 4:
-                         //   RemoveAnimal();
+                            Console.Clear();
+                            Console.WriteLine("What animal would you like to remove?\n");
+                            ViewAnimals();
+                            int choice = int.Parse(Console.ReadLine());
+                            RemoveAnimal(choice);
                             break;
+
+
+
                         case 5:
                            // FeedAnimals();
                             break;
-                        case 6:
+
+
+
+                        case 6:             //To return to Animal main menu
                             status = false;
                             Console.Clear();
                             break;
+
+
                         default:
                             Console.WriteLine("Please write a number between 1 - 5");
                             break;
@@ -141,7 +166,8 @@ namespace _2023._10._16
             Console.WriteLine("What is the animals name?");
             string name = Console.ReadLine();
             listOfAnimals.Add(new Animal(species, name));
-            farmbuilding.AddAnimal(listOfAnimals[-1]);
+            farmbuilding.AddAnimal(listOfAnimals[-1]);    //Vad är detta?? Det fungerar ju inte riktigt detta.
+                                                          //Enbart farmBuilding.AddAnimal(animal) som nedan verkar fungera. 
             return true;
 
         }
@@ -149,10 +175,12 @@ namespace _2023._10._16
 
         //This function need to check if the building s full or not! 
         //Still have some implementation to do here. 
-        private bool SwitchBuilding(Animal animal, FarmBuilding farmbuiding) //SwitchBuilding tar Id't av vilket djur skall byta byggnad och Id't från byggnaden djuret ska till.
+        private bool SwitchBuilding(Animal animal, FarmBuilding farmbuilding) //SwitchBuilding tar Id't av vilket djur skall
+                                                                              //byta byggnad och Id't från byggnaden djuret ska till.
         {
             Console.Clear();
-            Console.WriteLine($"The desired animal of Id: {animal.Id} has switched to the building of Id: {farmbuiding.Id}\n");
+            farmbuilding.AddAnimal(animal);
+            Console.WriteLine($"The desired animal of Id: {animal.Id} has switched to the building of Id: {farmbuilding.Id}\n");
             Console.WriteLine("Click to continue...");
             Console.ReadLine();
             return true;
@@ -162,7 +190,16 @@ namespace _2023._10._16
 
         private void RemoveAnimal(int num)
         {
-            ViewAnimals();
+            foreach (Animal animal in listOfAnimals)
+            {
+                if (animal.Id == num)
+                {
+                    listOfAnimals.Remove(animal);
+                    Console.WriteLine("The animal was removed.");
+                    Console.WriteLine("Click to continue...");
+                    Console.ReadLine();
+                }
+            }
 
         }
 

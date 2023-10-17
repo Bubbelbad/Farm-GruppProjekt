@@ -17,13 +17,19 @@ namespace _2023._10._16
             this.Capacity = capacity;
         }
 
+
+
+
         public override string GetDescription() //Funktion som visar djurets information. 
         {
             return $"Id: {Id} \nName: {Name} \nCapacity: {Capacity}\n";
         }
 
-        //Denna är inte klar ännu...
-        public bool IsFull()
+
+
+
+   
+        public bool IsFull()        //Function to see if any farms are at max capacity
         {
             if (animalList.Count >= Capacity)
             {
@@ -36,6 +42,10 @@ namespace _2023._10._16
         }
 
 
+
+
+
+
         public void ListAnimals() //Funktion som listar alla djur i animalList
         {
             foreach (Animal animal in animalList)
@@ -44,18 +54,37 @@ namespace _2023._10._16
             }
         }
 
-        public void AddAnimal(Animal animal) //Lägger till djur i listan. 
+
+
+
+
+
+        public void AddAnimal(Animal animal) //Adds animal to the animalList
         {
             animalList.Add(animal);
         }
 
-        public void RemoveAnimal(int num) 
-        {
 
+
+
+
+
+        public void RemoveAnimal(int num) //Removes Animal from the animalList.
+        {
+            foreach (Animal animal in animalList)
+            {
+                if (animal.Id == num)
+                {
+                    animalList.Remove(animal);
+                }
+            }
         }
 
-        //Är denna klar? Inte helt säker ännu. Kanske.
-        public bool IsEmpty()
+
+
+
+  
+        public bool IsEmpty() //Function to see if the farm is empty
         {
             if (animalList.Count == 0)
             {

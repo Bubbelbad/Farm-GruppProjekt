@@ -18,8 +18,7 @@ namespace _2023._10._16
 
         public BuildingManager()
         {
-            listOfFarmBuildings.Add(new FarmBuilding(50, "The Big 'ol Farm"));
-            listOfFarmBuildings.Add(new FarmBuilding(20, "Die Ränsch"));
+
         }
         
         public void BuildingMenu()
@@ -29,30 +28,37 @@ namespace _2023._10._16
             {
                 Console.Clear();
                 Console.WriteLine("What would you like to do: \n\n" +
-                                  "1. View Buildings\n" +
-                                  "2. AddBuilding\n" +
-                                  "3. Remove Building\n" +
+                                  "1. View Buildings\n" +               //klar
+                                  "2. AddBuilding\n" +                  //klar
+                                  "3. Remove Building\n" +              //klar
                                   "4. Quit buildings - menu\n");
                 try
                 {
                     int answer = int.Parse(Console.ReadLine());
                     switch (answer)
                     {
-                        case 1:
+                        case 1:               //Function to see the buildings
                             Console.Clear();
                             ViewBuildings();
                             Console.WriteLine("Click to continue...");
                             Console.ReadLine();
                             break;
-                        case 2:
+                        case 2:              //Function to add building
                             AddBuilding();
                             break;
                         case 3:
                             Console.Clear();
                             Console.WriteLine("What Building would you like to remove?\n");
                             ViewBuildings();
-                            int answer2 = int.Parse(Console.ReadLine());
-                            bool building = RemoveBuilding(answer2);     //Här måste jag göra någonting med boolen!
+                            try
+                            {
+                                int answer2 = int.Parse(Console.ReadLine());
+                                bool building = RemoveBuilding(answer2);     //Här måste jag göra någonting med boolen?
+                            }
+                            catch
+                            {
+                                Console.WriteLine("Choose one of the farms Id.");
+                            }
                             break;
                         case 4:
                             Console.Clear();
