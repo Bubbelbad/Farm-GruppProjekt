@@ -17,8 +17,9 @@ namespace _2023._10._16
         }
 
 
-        public void AnimalMenu()
+        public void AnimalMenu(List<FarmBuilding> farmBuilding)
         {
+
             bool status = true;
             int answer = 0;
             while (status)
@@ -42,13 +43,60 @@ namespace _2023._10._16
                             Console.WriteLine("Click to continue...");
                             Console.ReadLine();
                             break;
+
+
                         case 2:
                             Console.Clear();
-                         //  AddAnimal
-                            string farmBuilding = Console.ReadLine();
+                            Console.WriteLine("What farmbuilding do you want to add the animal to?\n" +
+                                              "Enter farm Id: \n");
+
+                            foreach (FarmBuilding farm in farmBuilding) //Showing the available farms
+                            {
+                                Console.WriteLine(farm.GetDescription());
+                            }
+
+                            int farmId = int.Parse(Console.ReadLine());
+                            FarmBuilding farmChoice = null;
+                            foreach (FarmBuilding farm in farmBuilding) //If the choice by Id exists, we go to function AddAnimal()
+                            {
+                                if (farm.Id == farmId)
+                                {
+                                    farmChoice = farm;
+                                    AddAnimal(farmChoice);
+                                }
+                            }
                             break;
+
+
                         case 3:
-                         //   SwitchBuilding();
+                            Console.WriteLine("What animal do you want to switch building?\n");
+                            ViewAnimals();
+                            int id = int.Parse(Console.ReadLine());
+                            Animal animalChoice = null;
+                            foreach(Animal animal in listOfAnimals)
+                            {
+                                if (animal.Id == id)
+                                {
+                                    animalChoice = animal;
+                                }
+                            }
+                            Console.Clear();
+                            Console.WriteLine("What building do you want the animal to go into?\n\n");
+                            foreach (FarmBuilding farm in farmBuilding)
+                            {
+                                Console.WriteLine(farm.GetDescription());
+                            }
+                            int id2 = int.Parse(Console.ReadLine());
+                            FarmBuilding farmChoice2 = null;
+                            foreach (FarmBuilding farm in farmBuilding)
+                            {
+                                if (farm.Id == id2)
+                                {
+                                    farmChoice2 = farm;
+                                }
+                            }
+                            SwitchBuilding(animalChoice, farmChoice2);
+
                             break;
                         case 4:
                          //   RemoveAnimal();
@@ -72,7 +120,9 @@ namespace _2023._10._16
             }
         }
 
-        private void ViewAnimals()
+
+
+        private void ViewAnimals() //Iterating through the list and showing all the animals.
         {
             for (int i = 0; i < listOfAnimals.Count; i++)
             {
@@ -80,8 +130,12 @@ namespace _2023._10._16
             }
         }
 
+
+
+
         private bool AddAnimal(FarmBuilding farmbuilding)
         {
+
             Console.WriteLine("What species of animal do you want to add?");
             string species = Console.ReadLine();
             Console.WriteLine("What is the animals name?");
@@ -89,18 +143,30 @@ namespace _2023._10._16
             listOfAnimals.Add(new Animal(species, name));
             farmbuilding.AddAnimal(listOfAnimals[-1]);
             return true;
-           
+
         }
 
-        private bool SwitchBuilding(Animal animal, FarmBuilding farmbuiding)
+
+        //This function need to check if the building s full or not! 
+        //Still have some implementation to do here. 
+        private bool SwitchBuilding(Animal animal, FarmBuilding farmbuiding) //SwitchBuilding tar Id't av vilket djur skall byta byggnad och Id't från byggnaden djuret ska till.
         {
+            Console.Clear();
+            Console.WriteLine($"The desired animal of Id: {animal.Id} has switched to the building of Id: {farmbuiding.Id}\n");
+            Console.WriteLine("Click to continue...");
+            Console.ReadLine();
             return true;
         }
 
+
+
         private void RemoveAnimal(int num)
         {
+            ViewAnimals();
 
         }
+
+
 
         private void FeedAnimals(string food, Crop crop)
         {

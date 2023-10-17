@@ -8,8 +8,6 @@
             WorkManager workManager = new WorkManager();
             workManager.workManager();
 
-            AnimalManager animalManager = new AnimalManager();
-            animalManager.AnimalMenu();
         }
     }
 }

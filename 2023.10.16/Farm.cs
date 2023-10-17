@@ -14,6 +14,7 @@ namespace _2023._10._16
 
         public Farm()
         {
+
             MainMenu();
         }
 
@@ -43,7 +44,7 @@ namespace _2023._10._16
 
                             break;
                         case 4:
-                            animalManager.AnimalMenu();
+                            animalManager.AnimalMenu(buildingManager.listOfFarmBuildings); 
                             break;
                         default:
                             Console.WriteLine("Vänligen skriv en siffra mellan 1 - 4");

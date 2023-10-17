@@ -9,8 +9,18 @@ namespace _2023._10._16
 {
     internal class BuildingManager
     {
-        List<FarmBuilding> listOfFarmBuildings = new List<FarmBuilding>();
 
+        public List<FarmBuilding> listOfFarmBuildings = new List<FarmBuilding>();
+
+
+
+
+
+        public BuildingManager()
+        {
+            listOfFarmBuildings.Add(new FarmBuilding(50, "The Big 'ol Farm"));
+            listOfFarmBuildings.Add(new FarmBuilding(20, "Die Ränsch"));
+        }
         
         public void BuildingMenu()
         {
@@ -61,6 +71,12 @@ namespace _2023._10._16
 
         }
 
+
+
+
+
+
+
         private void ViewBuildings()
         {
             foreach (FarmBuilding building in listOfFarmBuildings)
@@ -72,6 +88,12 @@ namespace _2023._10._16
                 Console.WriteLine("There are not yet buildings to display\n");
             }
         }
+
+
+
+
+
+
 
         private void AddBuilding()
         {
@@ -85,22 +107,45 @@ namespace _2023._10._16
             Console.ReadLine();
         }
 
+
+
+
+
+
+
         private bool RemoveBuilding(int num)
         {
             foreach (FarmBuilding building in listOfFarmBuildings)
             {
                 if (building.Id == num)
                 {
-                    listOfFarmBuildings.Remove(building);
-                    Console.WriteLine($"The building with Id: {num} was removed.\n");
-                    Console.WriteLine("Click to continue...");
-                    Console.ReadLine();
-                    return true;
+                    bool status = building.IsEmpty();
+                    if (status)
+                    {
+                        listOfFarmBuildings.Remove(building);
+                        Console.WriteLine($"The building with Id: {num} was removed.\n");
+                        Console.WriteLine("Click to continue...");
+                        Console.ReadLine();
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"The building with Id: {num} was not removed.\n" +
+                                          $"There are still animals in the building\n");
+                        Console.WriteLine("Click to continue...");
+                        Console.ReadLine();
+                        return false;
+                    }
+
                     
                 }
             }
             return false;
         }
+
+
+
+
 
         public List<FarmBuilding> GetBuildings()
         {

@@ -17,14 +17,15 @@ namespace _2023._10._16
             this.Capacity = capacity;
         }
 
-        public override string GetDescription()
+        public override string GetDescription() //Funktion som visar djurets information. 
         {
             return $"Id: {Id} \nName: {Name} \nCapacity: {Capacity}\n";
         }
 
+        //Denna är inte klar ännu...
         public bool IsFull()
         {
-            if (Capacity >= 100)
+            if (animalList.Count >= Capacity)
             {
                 return true;
             }
@@ -34,24 +35,29 @@ namespace _2023._10._16
             }
         }
 
-      //  public void ListAnimals()
-      //  {
-      //      foreach (Animal animal in animalList)
-      //  }
 
-        public void AddAnimal(Animal animal)
+        public void ListAnimals() //Funktion som listar alla djur i animalList
+        {
+            foreach (Animal animal in animalList)
+            {
+                Console.WriteLine(animal.GetDescription()); 
+            }
+        }
+
+        public void AddAnimal(Animal animal) //Lägger till djur i listan. 
         {
             animalList.Add(animal);
         }
 
-        public void RemoveAnimal(int num)
+        public void RemoveAnimal(int num) 
         {
 
         }
 
+        //Är denna klar? Inte helt säker ännu. Kanske.
         public bool IsEmpty()
         {
-            if (Capacity == 0)
+            if (animalList.Count == 0)
             {
                 return true;
             }
