@@ -34,9 +34,9 @@ namespace _2023._10._16
         {
             foreach (string acceptableCrop in AcceptableCropTypes)
             {
-                if (crop.cropTyp == acceptableCrop)
+                if (acceptableCrop == crop.cropTyp)
                 {
-                    //to be continued. 
+                    Console.WriteLine("The animal has been fed.");
                 }
             }
             

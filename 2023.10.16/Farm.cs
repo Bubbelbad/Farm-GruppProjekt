@@ -15,7 +15,6 @@ namespace _2023._10._16
         public CropManager cropManager = new CropManager();
         public Farm()
         {
-
             MainMenu();
         }
 
@@ -45,7 +44,7 @@ namespace _2023._10._16
                             cropManager.cropManager();
                             break;
                         case 4:
-                            animalManager.AnimalMenu(buildingManager.listOfFarmBuildings); 
+                            animalManager.AnimalMenu(buildingManager.listOfFarmBuildings, workManager.listOfWorkers); 
                             break;
                         default:
                             Console.WriteLine("Vänligen skriv en siffra mellan 1 - 4");
@@ -54,7 +53,7 @@ namespace _2023._10._16
                 }
                 catch
                 {
-
+                    Console.WriteLine("Please write a number between 1 - 4");
                 }
             }
         }
