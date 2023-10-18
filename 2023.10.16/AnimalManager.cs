@@ -8,7 +8,7 @@ namespace _2023._10._16
 {
     internal class AnimalManager
     {
-        List<Animal> listOfAnimals = new List<Animal>();
+        public List<Animal> listOfAnimals = new List<Animal>();
 
         public AnimalManager()
         {
@@ -16,7 +16,7 @@ namespace _2023._10._16
         }
 
 
-        public void AnimalMenu(List<FarmBuilding> farmBuilding)
+        public void AnimalMenu(List<FarmBuilding> farmBuilding, List<Worker> workManager)
         {
 
             bool status = true;
@@ -131,8 +131,36 @@ namespace _2023._10._16
 
 
                         case 5:
-                           // FeedAnimals();
-                            break;
+                  //          Console.WriteLine("What kind of animal do you want to feed?");
+                  //          string species = Console.ReadLine();
+                  //          foreach (Animal animal in listOfAnimals)
+                  //          {
+                  //              if (animal.Species == species)
+                  //              {
+                  //                  foreach (Crop crop in cropList)
+                  //                  {
+                  //                      Console.WriteLine(crop.ViewCrops());
+                  //                  }
+                  //                  Console.WriteLine("What kind of crop do you want to feed the animal?\n");
+                  //                  string cropName = Console.ReadLine());
+                  //
+                  //                  Console.WriteLine("What worker should obey and feed the animal?");
+                  //                  foreach (Worker worker in listOfWorkers)
+                  //                  {
+                  //                      Console.WriteLine(worker.ViewWorkers());
+                  //                  }
+                  //
+                  //                  foreach (Crop crop in cropList)
+                  //                  {
+                  //                      if (crop.cropTyp == cropName)
+                  //                      {
+                  //                          FeedAnimals(cropName, Crop crop);
+                  //                          crop.takeCrop();
+                  //                      }
+                  //                  }
+                  //              }
+                  //          }
+                  //          break;
 
 
 
@@ -207,7 +235,6 @@ namespace _2023._10._16
 
 
 
-
         private void RemoveAnimal(int num)
         {
             foreach (Animal animal in listOfAnimals)
@@ -225,7 +252,7 @@ namespace _2023._10._16
 
 
 
-        private void FeedAnimals(string food, Crop crop)
+        private void FeedAnimals(string cropId, Crop crop, Worker worker)
         {
 
         }

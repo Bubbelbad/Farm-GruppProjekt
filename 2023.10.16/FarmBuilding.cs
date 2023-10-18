@@ -28,7 +28,7 @@ namespace _2023._10._16
 
         public override string GetDescription() //Funktion som visar djurets information. 
         {
-            return $"Id: {Id} \nName: {Name} \nCapacity: {Capacity}\n Animals: {animalList.Count}";
+            return $"Id: {Id} \nName: {Name} \nCapacity: {Capacity}\nAnimals: {animalList.Count}";
         }
 
 

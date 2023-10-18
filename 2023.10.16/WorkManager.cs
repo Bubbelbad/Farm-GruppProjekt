@@ -11,7 +11,7 @@ namespace _2023._10._16
 {
     internal class WorkManager
     {
-        List<Worker> listOfWorkers = new List<Worker>();
+        public List<Worker> listOfWorkers = new List<Worker>();
         public WorkManager() 
         {
             listOfWorkers.Add(new Worker("Branislav", "speciality: work with animals"));
