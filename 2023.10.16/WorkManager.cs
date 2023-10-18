@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -13,8 +14,8 @@ namespace _2023._10._16
         List<Worker> listOfWorkers = new List<Worker>();
         public WorkManager() 
         {
-            listOfWorkers.Add(new Worker("Branislav", "speciality is to work with animals"));
-            listOfWorkers.Add(new Worker("Viktor", "speciality is to work on crop"));
+            listOfWorkers.Add(new Worker("Branislav", "speciality: work with animals"));
+            listOfWorkers.Add(new Worker("Viktor", "speciality: work on crop"));
 
         }
         public void workManager()
@@ -31,6 +32,31 @@ namespace _2023._10._16
                 case "1":
                     viewWorkers();
                     break;
+                case "2":
+                    addNewWorker();
+                    break;
+                case "3":  
+                  viewWorkers();
+                 
+                   try
+                   {
+                       Console.WriteLine("Write id of worker you want to remove:");
+                       int inputId = int.Parse(Console.ReadLine());
+                       Console.WriteLine("You have removed worker with Id " + inputId);
+                        removeWorker(inputId);
+                        workManager();
+                        break;
+                   }
+                   catch
+                   {
+                       
+                        workManager();
+                        
+
+                   }
+                   
+                 break;
+
                 default: 
                     Console.WriteLine("error");
                     break;
@@ -38,12 +64,36 @@ namespace _2023._10._16
             }
             
         }
-        public void viewWorkers()
+        private void viewWorkers()
         {
             foreach(Worker worker in listOfWorkers)
             {
                 Console.WriteLine(worker.GetDescription());
             }
+        }
+        private void addNewWorker()
+        {
+            Console.WriteLine("Write name of new worker: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Write speciality of new worker");
+            string speciality = Console.ReadLine();
+            listOfWorkers.Add(new Worker(name, speciality));
+            Console.WriteLine("you added new worker!!!");
+
+        } 
+        private int removeWorker(int num)
+        {
+               
+            foreach (Worker worker in listOfWorkers)
+            {
+                if (worker.Id == num)
+                {
+                    listOfWorkers.Remove(worker);
+                    
+                }
+               
+            }
+            return num;
         }
     }
 }
