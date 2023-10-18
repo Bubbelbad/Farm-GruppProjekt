@@ -28,7 +28,7 @@ namespace _2023._10._16
 
         public override string GetDescription() //Funktion som visar djurets information. 
         {
-            return $"Id: {Id} \nName: {Name} \nCapacity: {Capacity}\n";
+            return $"Id: {Id} \nName: {Name} \nCapacity: {Capacity}\n Animals: {animalList.Count}";
         }
 
 
@@ -51,15 +51,21 @@ namespace _2023._10._16
 
 
 
-
         public void ListAnimals() //Funktion som listar alla djur i animalList
         {
-            foreach (Animal animal in animalList)
+            if (animalList.Count == 0)
             {
-                Console.WriteLine(animal.GetDescription()); 
+                Console.WriteLine("There are no animals to see...\n" +
+                                  "Try adding some!\n");
+            }
+            else
+            {
+                foreach (Animal animal in animalList)
+                {
+                    Console.WriteLine(animal.GetDescription());
+                }
             }
         }
-
 
 
 
@@ -81,7 +87,6 @@ namespace _2023._10._16
 
 
         }
-
 
 
 

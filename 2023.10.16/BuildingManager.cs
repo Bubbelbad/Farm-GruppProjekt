@@ -20,6 +20,8 @@ namespace _2023._10._16
         {
 
         }
+
+
         
         public void BuildingMenu()
         {
@@ -53,7 +55,7 @@ namespace _2023._10._16
                             try
                             {
                                 int answer2 = int.Parse(Console.ReadLine());
-                                bool building = RemoveBuilding(answer2);               //Här måste jag göra någonting med boolen?
+                                bool building = RemoveBuilding(answer2);               //Här måste jag göra någonting med boolen? <<<<<----------
                             }
                             catch
                             {
@@ -80,10 +82,6 @@ namespace _2023._10._16
 
 
 
-
-
-
-
         private void ViewBuildings() //Function to see all buildings in the list
         {
             foreach (FarmBuilding building in listOfFarmBuildings)
@@ -95,10 +93,6 @@ namespace _2023._10._16
                 Console.WriteLine("There are not yet buildings to display\n");
             }
         }
-
-
-
-
 
 
 
@@ -116,16 +110,13 @@ namespace _2023._10._16
 
 
 
-
-
-
-
         private bool RemoveBuilding(int num)  //Function to remove building from list, but only if it's empty
         {
             foreach (FarmBuilding building in listOfFarmBuildings)
             {
                 if (building.Id == num)
                 {
+
                     bool status = building.IsEmpty(); //If building is empty, we remove
                     if (status)
                     {
@@ -135,6 +126,7 @@ namespace _2023._10._16
                         Console.ReadLine();
                         return true;
                     }
+
                     else  //If building is full, we do not remove.
                     {
                         Console.WriteLine($"The building with Id: {num} was not removed.\n" +
@@ -152,9 +144,7 @@ namespace _2023._10._16
 
 
 
-
-
-        public List<FarmBuilding> GetBuildings()    //This I'm not sure what it's supposed to do ???
+        public List<FarmBuilding> GetBuildings()    //This I'm not sure what it's supposed to do ??? <<<<<--------------------------
         {
             return new List<FarmBuilding>();
         }

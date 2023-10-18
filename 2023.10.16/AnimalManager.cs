@@ -63,12 +63,21 @@ namespace _2023._10._16
                                 {
                                     Console.WriteLine(farm.GetDescription());
                                 }
-                                int farmId = int.Parse(Console.ReadLine());
-                                foreach (FarmBuilding farm in farmBuilding) //If the choice by Id exists, we go to function AddAnimal()
+                                bool status2 = false;
+
+                                while (!status2)
                                 {
-                                    if (farm.Id == farmId)
+                                    int farmId = int.Parse(Console.ReadLine());
+                                    foreach (FarmBuilding farm in farmBuilding) //If the choice by Id exists, we go to function AddAnimal()
                                     {
-                                        AddAnimal(farm);
+                                        if (farm.Id == farmId)
+                                        {
+                                            AddAnimal(farm);
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("The farm you entered do not exist.\nTry again: ");
+                                        }
                                     }
                                 }
                             }
@@ -89,6 +98,7 @@ namespace _2023._10._16
                                     animalChoice = animal;
                                 }
                             }
+
                             Console.Clear();
                             Console.WriteLine("What building do you want the animal to go into?\n\n");
                             foreach (FarmBuilding farm in farmBuilding)
@@ -104,6 +114,7 @@ namespace _2023._10._16
                                     farmChoice2 = farm;
                                 }
                             }
+
                             SwitchBuilding(animalChoice, farmChoice2);
                             break;
 
@@ -147,13 +158,19 @@ namespace _2023._10._16
 
         private void ViewAnimals() //Iterating through the list and showing all the animals.
         {
-            for (int i = 0; i < listOfAnimals.Count; i++)
+            if (listOfAnimals.Count == 0)
             {
-                Console.WriteLine(listOfAnimals[i].GetDescription()); 
+                Console.WriteLine("There are no animals to view.\n" +
+                                  "Try adding some!\n");
+            }
+            else
+            {
+                for (int i = 0; i < listOfAnimals.Count; i++)
+                {
+                    Console.WriteLine(listOfAnimals[i].GetDescription());
+                }
             }
         }
-
-
 
 
         private bool AddAnimal(FarmBuilding farmbuilding)
@@ -165,12 +182,12 @@ namespace _2023._10._16
             string name = Console.ReadLine();
             listOfAnimals.Add(new Animal(species, name));
             int index = listOfAnimals.Count - 1;
-            farmbuilding.AddAnimal(listOfAnimals[index]);   
-                                                           
+            farmbuilding.AddAnimal(listOfAnimals[index]);
+            Console.WriteLine($"{name} has been added to farm with Id {farmbuilding.Id}");
+
             return true;
 
         }
-
 
 
 
