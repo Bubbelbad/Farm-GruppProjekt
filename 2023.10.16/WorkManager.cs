@@ -25,38 +25,39 @@ namespace _2023._10._16
             Console.WriteLine("Press 1 if you want to see all workers");
             Console.WriteLine("Press 2 if you want to add new worker");
             Console.WriteLine("Press 3 if you want to remov worker");
+            Console.WriteLine("press 4 if you want to go back to farm menu");
             string userInput = Console.ReadLine();
 
             switch (userInput)
             {
                 case "1":
                     viewWorkers();
+                    workManager();
                     break;
                 case "2":
                     addNewWorker();
+                    workManager();
                     break;
                 case "3":  
                   viewWorkers();
                  
                    try
                    {
-                       Console.WriteLine("Write id of worker you want to remove:");
-                       int inputId = int.Parse(Console.ReadLine());
-                       Console.WriteLine("You have removed worker with Id " + inputId);
+                        Console.WriteLine("Write id number of user you want to remove: ");
+                        int inputId = int.Parse(Console.ReadLine());
                         removeWorker(inputId);
                         workManager();
                         break;
                    }
                    catch
                    {
-                       
-                        workManager();
-                        
-
+                        workManager();  
                    }
                    
-                 break;
-
+                break;
+                case "4":
+                   
+                break;
                 default: 
                     Console.WriteLine("error");
                     break;
@@ -88,8 +89,11 @@ namespace _2023._10._16
             {
                 if (worker.Id == num)
                 {
+                   
                     listOfWorkers.Remove(worker);
-                    
+                    Console.WriteLine("You have removed worker with Id " + num);
+
+
                 }
                
             }

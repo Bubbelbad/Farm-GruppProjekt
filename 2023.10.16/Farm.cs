@@ -12,7 +12,7 @@ namespace _2023._10._16
         public BuildingManager buildingManager = new BuildingManager();
         public AnimalManager animalManager = new AnimalManager();
         public WorkManager workManager = new WorkManager();
-
+        public CropManager cropManager = new CropManager();
         public Farm()
         {
 
@@ -42,7 +42,7 @@ namespace _2023._10._16
                             workManager.workManager();
                             break;
                         case 3:
-
+                            cropManager.cropManager();
                             break;
                         case 4:
                             animalManager.AnimalMenu(buildingManager.listOfFarmBuildings); 

@@ -18,15 +18,9 @@ namespace _2023._10._16
         }
         public override string GetDescription()
         {
-            return base.GetDescription();
+            return $"Id: {Id} crop: {cropTyp} quantity: {quantity}";
         }
-        public int addCrop()
-        {
-            return quantity;
-        }
-        public int takeCrop()
-        {
-            return quantity;
-        }
+       
+        
     }
 }
