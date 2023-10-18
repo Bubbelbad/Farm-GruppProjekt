@@ -10,7 +10,13 @@ namespace _2023._10._16
     {
         List<Animal> animalList = new List<Animal>();  
 
+
+
+
         private int Capacity { get; set; }
+
+
+
 
         public FarmBuilding(int capacity, string name) : base(name)
         {
@@ -59,9 +65,21 @@ namespace _2023._10._16
 
 
 
-        public void AddAnimal(Animal animal) //Adds animal to the animalList
+        public void AddAnimal(Animal animal) //Adds animal to the animalList - KLAR
         {
-            animalList.Add(animal);
+            if (!IsFull())
+            {
+                animalList.Add(animal);
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("The farm is full, animal not added.\n\n");
+                Console.WriteLine("Click to continue...");
+                Console.ReadLine();
+            }
+
+
         }
 
 

@@ -64,13 +64,11 @@ namespace _2023._10._16
                                     Console.WriteLine(farm.GetDescription());
                                 }
                                 int farmId = int.Parse(Console.ReadLine());
-                                FarmBuilding farmChoice = null;
                                 foreach (FarmBuilding farm in farmBuilding) //If the choice by Id exists, we go to function AddAnimal()
                                 {
                                     if (farm.Id == farmId)
                                     {
-                                        farmChoice = farm;
-                                        AddAnimal(farmChoice);
+                                        AddAnimal(farm);
                                     }
                                 }
                             }
@@ -166,11 +164,14 @@ namespace _2023._10._16
             Console.WriteLine("What is the animals name?");
             string name = Console.ReadLine();
             listOfAnimals.Add(new Animal(species, name));
-            farmbuilding.AddAnimal(listOfAnimals[-1]);    //Vad är detta?? Det fungerar ju inte riktigt detta.
-                                                          //Enbart farmBuilding.AddAnimal(animal) som nedan verkar fungera. 
+            int index = listOfAnimals.Count - 1;
+            farmbuilding.AddAnimal(listOfAnimals[index]);   
+                                                           
             return true;
 
         }
+
+
 
 
         //This function need to check if the building s full or not! 
@@ -185,6 +186,8 @@ namespace _2023._10._16
             Console.ReadLine();
             return true;
         }
+
+
 
 
 

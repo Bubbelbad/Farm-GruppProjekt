@@ -13,17 +13,24 @@ namespace _2023._10._16
         private List<string> AcceptableCropTypes = new List<string> { "Grass", "Leaves", "Potatoes", "Cheeseballs" };
 
 
+
         public Animal(string species, string name) : base(name)
         {
             this.Species = species;
         }
 
-        public override string GetDescription()
+
+
+
+        public override string GetDescription() //To return a description of the Animal
         {
             return $"Id: {Id}\nSpecies: {Species} \nName: {Name} \n";
         }
 
-        public void Feed(Crop crop)
+
+
+        //This is not done yet! To be continued.
+        public void Feed(Crop crop) //To feed Coprs to the Animal.
         {
             foreach (string acceptableCrop in AcceptableCropTypes)
             {
