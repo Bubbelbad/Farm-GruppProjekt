@@ -23,7 +23,7 @@ namespace _2023._10._16
 
 
 
-        
+        //Building manager main menu:
         public void BuildingMenu()
         {
             bool status = true;
@@ -49,14 +49,29 @@ namespace _2023._10._16
                         case 2:              //Function to add building
                             AddBuilding();
                             break;
-                        case 3:              //Function to remov a building
+                        case 3:              //Function to remove a building
                             Console.Clear();
                             Console.WriteLine("What Building would you like to remove?\n");
                             ViewBuildings();
                             try
                             {
                                 int answer2 = int.Parse(Console.ReadLine());
-                                bool building = RemoveBuilding(answer2);               //Här måste jag göra någonting med boolen? <<<<<----------
+                                bool building = RemoveBuilding(answer2);  
+                                if (building)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine($"The building with Id: {answer2} was removed.\n");
+                                    Console.WriteLine("Click to continue...");
+                                    Console.ReadLine();
+                                }
+                                else if (!building)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine($"The building with Id: {answer2} was not removed.\n" +
+                                          $"There are still animals in the building (!)\n");
+                                    Console.WriteLine("Click to continue...");
+                                    Console.ReadLine();
+                                }
                             }
                             catch
                             {
@@ -82,12 +97,11 @@ namespace _2023._10._16
         }
 
 
-
         private void ViewBuildings() //Function to see all buildings in the list
         {
             foreach (FarmBuilding building in listOfFarmBuildings)
             {
-                Console.WriteLine(building.GetDescription());
+                Console.WriteLine(building.GetDescription() + "\n");
             }
             if (listOfFarmBuildings.Count == 0)
             {
@@ -96,19 +110,24 @@ namespace _2023._10._16
         }
 
 
-
         private void AddBuilding() //Function create and add building to the buildings list
         {
             Console.Clear();
             Console.WriteLine("What is the name of the building you want to add?");
             string name = Console.ReadLine();
             Console.WriteLine("What is the capacity of the building?");
-            int capacity = int.Parse(Console.ReadLine());
-            listOfFarmBuildings.Add(new FarmBuilding(capacity, name));
-            Console.WriteLine("Click to continue...");
-            Console.ReadLine();
+            try
+            {
+                int capacity = int.Parse(Console.ReadLine());
+                listOfFarmBuildings.Add(new FarmBuilding(capacity, name));
+                Console.WriteLine("Click to continue...");
+                Console.ReadLine();
+            }
+            catch
+            {
+                Console.WriteLine("Please write a number...");
+            }
         }
-
 
 
         private bool RemoveBuilding(int num)  //Function to remove building from list, but only if it's empty
@@ -122,18 +141,11 @@ namespace _2023._10._16
                     if (status)
                     {
                         listOfFarmBuildings.Remove(building);
-                        Console.WriteLine($"The building with Id: {num} was removed.\n");
-                        Console.WriteLine("Click to continue...");
-                        Console.ReadLine();
                         return true;
                     }
 
                     else  //If building is full, we do not remove.
                     {
-                        Console.WriteLine($"The building with Id: {num} was not removed.\n" +
-                                          $"There are still animals in the building\n");
-                        Console.WriteLine("Click to continue...");
-                        Console.ReadLine();
                         return false;
                     }
 
@@ -145,6 +157,7 @@ namespace _2023._10._16
 
 
 
+        //I need to have a look at this. Can I use this instead of the other list? Probably...
         public List<FarmBuilding> GetBuildings()    //This I'm not sure what it's supposed to do ??? <<<<<--------------------------
         {
             return new List<FarmBuilding>();

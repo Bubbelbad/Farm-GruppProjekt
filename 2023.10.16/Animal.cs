@@ -13,12 +13,11 @@ namespace _2023._10._16
         private List<string> AcceptableCropTypes = new List<string> { "Grass", "Leaves", "Potatoes", "Cheeseballs" };
 
 
-
-        public Animal(string species, string name) : base(name)
+        //Constructor, inherited base from entity
+        public Animal(string species, string name) : base(name) 
         {
             this.Species = species;
         }
-
 
 
 
@@ -30,7 +29,9 @@ namespace _2023._10._16
 
 
         //This is not done yet! To be continued.
-        public void Feed(Crop crop) //To feed Coprs to the Animal.
+        //Or is it? Not sure if the other function should do the rest...
+
+        public void Feed(Crop crop) //To feed Crops to the Animal.
         {
             foreach (string acceptableCrop in AcceptableCropTypes)
             {
@@ -40,7 +41,7 @@ namespace _2023._10._16
                 }
                 else
                 {
-                    Console.WriteLine($"The animal doesnt like {crop.cropTyp}");
+                    Console.WriteLine($"The animal does'nt like {crop.cropTyp}");
                 }
             }
             

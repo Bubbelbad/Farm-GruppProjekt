@@ -8,31 +8,23 @@ namespace _2023._10._16
 {
     internal class FarmBuilding : Entity
     {
-        List<Animal> animalList = new List<Animal>();  
-
-
+        public List<Animal> animalList = new List<Animal>();  
 
 
         private int Capacity { get; set; }
 
 
-
-
+        //Constructor 
         public FarmBuilding(int capacity, string name) : base(name)
         {
             this.Capacity = capacity;
         }
 
 
-
-
         public override string GetDescription() //Funktion som visar djurets information. 
         {
             return $"Id: {Id} \nName: {Name} \nCapacity: {Capacity}\nAnimals: {animalList.Count}";
         }
-
-
-
 
    
         public bool IsFull()        //Function to see if any farms are at max capacity
@@ -46,9 +38,6 @@ namespace _2023._10._16
                 return false;
             }
         }
-
-
-
 
 
         public void ListAnimals() //Funktion som listar alla djur i animalList
@@ -66,9 +55,6 @@ namespace _2023._10._16
                 }
             }
         }
-
-
-
 
 
         public void AddAnimal(Animal animal) //Adds animal to the animalList - KLAR
@@ -89,9 +75,6 @@ namespace _2023._10._16
         }
 
 
-
-
-
         public void RemoveAnimal(int num) //Removes Animal from the animalList.
         {
             foreach (Animal animal in animalList)
@@ -104,9 +87,6 @@ namespace _2023._10._16
         }
 
 
-
-
-  
         public bool IsEmpty() //Function to see if the farm is empty
         {
             if (animalList.Count == 0)

@@ -18,7 +18,7 @@ namespace _2023._10._16
             MainMenu();
         }
 
-        public void MainMenu()
+        public void MainMenu() //Main menu for the whole program to enter the different manager menus
         {
             bool status = true;
             while (status)
