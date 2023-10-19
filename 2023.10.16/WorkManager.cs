@@ -14,8 +14,10 @@ namespace _2023._10._16
         public List<Worker> listOfWorkers = new List<Worker>();
         public WorkManager() 
         {
-            listOfWorkers.Add(new Worker("Branislav", "speciality: work with animals"));
-            listOfWorkers.Add(new Worker("Viktor", "speciality: work on crop"));
+            listOfWorkers.Add(new Worker("Branislav", "Grass"));
+            listOfWorkers.Add(new Worker("Viktor", "Leaves"));
+            listOfWorkers.Add(new Worker("Niklas", "Potatoes"));
+            listOfWorkers.Add(new Worker("Bob", "Cheeseballs"));
 
         }
         public void workManager()
@@ -98,6 +100,14 @@ namespace _2023._10._16
                
             }
             return num;
+        }
+        public List<Worker> getWorkers()
+        {
+           foreach( Worker worker in listOfWorkers)
+            {
+                Console.WriteLine(worker.GetDescription());
+            }
+            return new List<Worker>();
         }
     }
 }

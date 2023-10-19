@@ -9,31 +9,34 @@ namespace _2023._10._16
     internal class Crop : Entity
     {
 
-        public string cropTyp { get; set; }
+        public string CropTyp { get; set; }
         private int quantity { get; set; }
-        public Crop(string name, string cropTyp, int quantit) : base(name)
+        public Crop(string name, string CropTyp, int quantit) : base(name)
         {
-            this.cropTyp = cropTyp;
+            this.CropTyp = CropTyp;
             this.quantity = quantit;
         }
         public override string GetDescription()
         {
-            return $"Id: {Id} crop: {cropTyp} quantity: {quantity}";
+            return $"Id: {Id} crop: {CropTyp} quantity: {quantity}";
         }
-       
+
         //Här behövs det två extra funktioner: 
 
+        public List<Crop> listOfCrops = new List<Crop>();
+        public void AddCrop(int cropQuantity)
+        {
+            
+                quantity = quantity + cropQuantity;
+ 
+        }
 
-        //public AddCrop(int num) <<----------
-        //{
-        //
-       // }
 
 
-
-        //public bool TakeCrop(int num) <<---------
-        //{
-        //
-        //}
+        public bool TakeCrop(int num) 
+        {
+            return false;
+        
+        }
     }
 }

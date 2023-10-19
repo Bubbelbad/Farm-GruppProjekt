@@ -183,7 +183,7 @@ namespace _2023._10._16
                                 Crop crop1 = null;
                                 foreach (Crop crop in cropList)
                                 {
-                                    if (cropName == crop.cropTyp)
+                                    if (cropName == crop.CropTyp)
                                     {
                                         crop1 = crop;
                                     }

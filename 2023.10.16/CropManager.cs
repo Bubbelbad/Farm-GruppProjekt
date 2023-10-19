@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +11,7 @@ namespace _2023._10._16
     internal class CropManager
     {
         public List<Crop> listOfCrops = new List<Crop>();
+        public WorkManager workManager = new WorkManager();
         public CropManager() 
         {
             listOfCrops.Add(new Crop("Grass", "Grass", 500));
@@ -33,9 +36,27 @@ namespace _2023._10._16
                 break;
 
                 case "2":
-
-                break;
-
+                    workManager.getWorkers();
+                    Console.WriteLine("Write a id number of worker you want to use");
+                    Console.WriteLine("Write a name of Crop you want to add");
+                    string cropName = Console.ReadLine();
+                    Console.WriteLine("Write a typ of crop you want to add");
+                    string cropTyp = Console.ReadLine();
+                    Console.WriteLine("Write a quantity of crop");
+                    int cropQuantity = int.Parse(Console.ReadLine());
+                    foreach(Crop crop in listOfCrops)
+                    {
+                        if (cropTyp == crop.CropTyp)
+                        {
+                            crop.AddCrop(cropQuantity);
+                            break;
+                        }
+                        else
+                        {
+                            listOfCrops.Add(new Crop(cropName, cropTyp, cropQuantity)); 
+                        }
+                    }
+                    break;
                 case "3":
                     viewCrops();
                     try
@@ -80,12 +101,12 @@ namespace _2023._10._16
             }
         }
 
-        /* Den här funktionen behöver utvecklas: 
+         
 
         public List<Crop> GetCrops()
         {
-
+            return new List<Crop>();
         }
-        */
+        
     }
 }
