@@ -16,10 +16,11 @@ namespace _2023._10._16
 
 
 
-        public BuildingManager() //an empty constructor so that a player creates all buildings from scratch
+        public BuildingManager()
         {
+            listOfFarmBuildings.Add(new FarmBuilding(3, "Farmen"));
+        }//an empty constructor so that a player creates all buildings from scratch
 
-        }
 
 
         

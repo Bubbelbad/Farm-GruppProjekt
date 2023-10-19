@@ -38,6 +38,10 @@ namespace _2023._10._16
                 {
                     Console.WriteLine("The animal has been fed.");
                 }
+                else
+                {
+                    Console.WriteLine($"The animal doesnt like {crop.cropTyp}");
+                }
             }
             
         }

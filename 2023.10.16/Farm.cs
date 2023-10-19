@@ -23,6 +23,7 @@ namespace _2023._10._16
             bool status = true;
             while (status)
             {
+                Console.Clear();
                 Console.WriteLine("Choose one of the following menus: \n\n" +
                                   "1. Building Menu\n" +
                                   "2. Worker Menu\n" +
@@ -44,7 +45,7 @@ namespace _2023._10._16
                             cropManager.cropManager();
                             break;
                         case 4:
-                            animalManager.AnimalMenu(buildingManager.listOfFarmBuildings, workManager.listOfWorkers); 
+                            animalManager.AnimalMenu(buildingManager.listOfFarmBuildings, workManager.listOfWorkers, cropManager.listOfCrops); 
                             break;
                         default:
                             Console.WriteLine("Vänligen skriv en siffra mellan 1 - 4");

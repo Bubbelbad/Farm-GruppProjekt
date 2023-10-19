@@ -11,7 +11,7 @@ namespace _2023._10._16
 
         public string cropTyp { get; set; }
         private int quantity { get; set; }
-        public Crop(string name,string cropTyp, int quantit):base(name)
+        public Crop(string name, string cropTyp, int quantit) : base(name)
         {
             this.cropTyp = cropTyp;
             this.quantity = quantit;
@@ -21,6 +21,19 @@ namespace _2023._10._16
             return $"Id: {Id} crop: {cropTyp} quantity: {quantity}";
         }
        
-        
+        //Här behövs det två extra funktioner: 
+
+
+        //public AddCrop(int num) <<----------
+        //{
+        //
+       // }
+
+
+
+        //public bool TakeCrop(int num) <<---------
+        //{
+        //
+        //}
     }
 }

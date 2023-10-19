@@ -79,5 +79,13 @@ namespace _2023._10._16
                 }
             }
         }
+
+        /* Den här funktionen behöver utvecklas: 
+
+        public List<Crop> GetCrops()
+        {
+
+        }
+        */
     }
 }

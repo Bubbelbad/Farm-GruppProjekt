@@ -16,7 +16,7 @@ namespace _2023._10._16
         }
 
 
-        public void AnimalMenu(List<FarmBuilding> farmBuilding, List<Worker> workManager)
+        public void AnimalMenu(List<FarmBuilding> farmList, List<Worker> workerList, List<Crop> cropList)
         {
 
             bool status = true;
@@ -48,7 +48,7 @@ namespace _2023._10._16
 
                         case 2:
                             Console.Clear();
-                            if (farmBuilding.Count == 0)
+                            if (farmList.Count == 0)
                             {
                                 Console.WriteLine("There are no farms to put your animal into. \n" +
                                                   "First you need to add a farm from buildings menu!\n\n" +
@@ -59,7 +59,7 @@ namespace _2023._10._16
                             {
                                 Console.WriteLine("What farmbuilding do you want to add the animal to?\n" +
                                               "Enter farm Id: \n");
-                                foreach (FarmBuilding farm in farmBuilding) //Showing the available farms
+                                foreach (FarmBuilding farm in farmList) //Showing the available farms
                                 {
                                     Console.WriteLine(farm.GetDescription());
                                 }
@@ -68,7 +68,7 @@ namespace _2023._10._16
                                 while (!status2)
                                 {
                                     int farmId = int.Parse(Console.ReadLine());
-                                    foreach (FarmBuilding farm in farmBuilding) //If the choice by Id exists, we go to function AddAnimal()
+                                    foreach (FarmBuilding farm in farmList) //If the choice by Id exists, we go to function AddAnimal()
                                     {
                                         if (farm.Id == farmId)
                                         {
@@ -101,13 +101,13 @@ namespace _2023._10._16
 
                             Console.Clear();
                             Console.WriteLine("What building do you want the animal to go into?\n\n");
-                            foreach (FarmBuilding farm in farmBuilding)
+                            foreach (FarmBuilding farm in farmList)
                             {
                                 Console.WriteLine(farm.GetDescription());
                             }
                             int id2 = int.Parse(Console.ReadLine());
                             FarmBuilding farmChoice2 = null;
-                            foreach (FarmBuilding farm in farmBuilding)
+                            foreach (FarmBuilding farm in farmList)
                             {
                                 if (farm.Id == id2)
                                 {
@@ -131,36 +131,54 @@ namespace _2023._10._16
 
 
                         case 5:
-                  //          Console.WriteLine("What kind of animal do you want to feed?");
-                  //          string species = Console.ReadLine();
-                  //          foreach (Animal animal in listOfAnimals)
-                  //          {
-                  //              if (animal.Species == species)
-                  //              {
-                  //                  foreach (Crop crop in cropList)
-                  //                  {
-                  //                      Console.WriteLine(crop.ViewCrops());
-                  //                  }
-                  //                  Console.WriteLine("What kind of crop do you want to feed the animal?\n");
-                  //                  string cropName = Console.ReadLine());
-                  //
-                  //                  Console.WriteLine("What worker should obey and feed the animal?");
-                  //                  foreach (Worker worker in listOfWorkers)
-                  //                  {
-                  //                      Console.WriteLine(worker.ViewWorkers());
-                  //                  }
-                  //
-                  //                  foreach (Crop crop in cropList)
-                  //                  {
-                  //                      if (crop.cropTyp == cropName)
-                  //                      {
-                  //                          FeedAnimals(cropName, Crop crop);
-                  //                          crop.takeCrop();
-                  //                      }
-                  //                  }
-                  //              }
-                  //          }
-                  //          break;
+                            Console.Clear();
+                            Console.WriteLine("What kind of animal do you want to feed?");
+                            string species = Console.ReadLine();
+                            foreach (Animal animal in listOfAnimals)
+                            {
+                                if (animal.Species == species)
+                                {
+                                    foreach (Crop crop in cropList)
+                                    {
+                                        Console.WriteLine(crop.GetDescription());
+                                    }
+                                }
+                                Console.Clear();
+                                Console.WriteLine("What kind of crop do you want to feed the animal? (Choose by name)\n");
+                                foreach (Crop crop in cropList)
+                                {
+                                    Console.WriteLine(crop.GetDescription());
+                                }
+                                string cropName = Console.ReadLine();
+                                Crop crop1 = null;
+                                foreach (Crop crop in cropList)
+                                {
+                                    if (cropName == crop.cropTyp)
+                                    {
+                                        crop1 = crop;
+                                    }
+                                }
+
+                                Console.Clear();
+                                Console.WriteLine("What worker should obey and feed the animal? (Choose by Id)\n");
+                                Worker worker1 = null;
+                                foreach (Worker worker in workerList)
+                                {
+                                    Console.WriteLine(worker.GetDescription());
+                                }
+                                int workerChoice = int.Parse(Console.ReadLine());
+                                foreach (Worker worker in workerList)
+                                {
+                                    if (workerChoice == worker.Id)
+                                    {
+                                        worker1 = worker;
+                                    }
+                                }
+
+                                FeedAnimals(cropName, worker1, crop1);
+                                
+                            }
+                            break;
 
 
 
@@ -170,7 +188,7 @@ namespace _2023._10._16
                             break;
 
 
-                        default:
+                        default:    //Fail safe, just in case user can spell a single digit
                             Console.WriteLine("Please write a number between 1 - 5");
                             break;
                     }
@@ -252,9 +270,18 @@ namespace _2023._10._16
 
 
 
-        private void FeedAnimals(string cropId, Crop crop, Worker worker)
+        private void FeedAnimals(string species, Worker worker, Crop crop)
         {
-
+            foreach (Animal animal in listOfAnimals)
+            {
+                if (animal.Species == species)
+                {
+                    animal.Feed(crop);
+                }
+            }
+            Console.WriteLine("Just to make sure we get here...");
+            Console.WriteLine("Click to continue...");
+            Console.ReadLine();
         }
 
     }
