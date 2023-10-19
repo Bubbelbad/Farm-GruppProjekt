@@ -105,6 +105,10 @@ namespace _2023._10._16
 
         public List<Crop> GetCrops()
         {
+            foreach(Crop crop in listOfCrops)
+            {
+                Console.WriteLine(crop.GetDescription());
+            }
             return new List<Crop>();
         }
         
