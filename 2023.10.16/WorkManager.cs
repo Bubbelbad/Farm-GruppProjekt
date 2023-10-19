@@ -101,6 +101,8 @@ namespace _2023._10._16
             }
             return num;
         }
+
+        //Den här funktionen måste returnera listan!
         public List<Worker> getWorkers()
         {
            foreach( Worker worker in listOfWorkers)

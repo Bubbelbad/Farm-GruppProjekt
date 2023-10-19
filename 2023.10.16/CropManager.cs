@@ -10,8 +10,15 @@ namespace _2023._10._16
 {
     internal class CropManager
     {
-        public List<Crop> listOfCrops = new List<Crop>();
+        List<Crop> listOfCrops = new List<Crop>();
+
+
         public WorkManager workManager = new WorkManager();
+        /*Förlåt men vi kan inte ha en workmanager i den här klassen! 
+        En ledtråd - kolla på CropManager i klass-diagrammet.
+        Där kan du nog se hur vi ska nå workManager.GetWorker()   ;) */
+
+
         public CropManager() 
         {
             listOfCrops.Add(new Crop("Grass", "Grass", 500));
@@ -20,6 +27,7 @@ namespace _2023._10._16
             listOfCrops.Add(new Crop("Cheeseballs", "Cheeseballs", 300));
         }
 
+        //Du behöver göra om den här enligt klassdiagrammet <----
         public void cropManager()
         {
             Console.WriteLine("Welcam to corp manager what do you like to do?");
@@ -36,7 +44,7 @@ namespace _2023._10._16
                 break;
 
                 case "2":
-                    workManager.getWorkers();
+                    workManager.getWorkers(); 
                     Console.WriteLine("Write a id number of worker you want to use");
                     Console.WriteLine("Write a name of Crop you want to add");
                     string cropName = Console.ReadLine();
@@ -102,7 +110,7 @@ namespace _2023._10._16
         }
 
          
-
+        //Den här funktionen behöver bara returnera listan, inte skriva ut den också! 
         public List<Crop> GetCrops()
         {
 
