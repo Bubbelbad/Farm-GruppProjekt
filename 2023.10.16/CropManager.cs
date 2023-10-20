@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.WebSockets;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,33 +50,16 @@ namespace _2023._10._16
 
                     Console.WriteLine("Write a id number of worker you want to use");
                     int idWorker = int.Parse(Console.ReadLine());
-                    Console.WriteLine("Write a name of Crop you want to add");
-                    string cropName = Console.ReadLine();
-                    Console.WriteLine("Write a typ of crop you want to add");
-                    string cropTyp = Console.ReadLine();
-                    Console.WriteLine("Write a quantity of crop");
-                    int cropQuantity = int.Parse(Console.ReadLine());
-                    foreach(Crop crop in listOfCrops)
+                    Worker worker1 = null;
+                    foreach (Worker worker in workerList)
                     {
-                        if (cropTyp == crop.CropTyp)
+                        if(worker.Id == idWorker)
                         {
-                            foreach(Worker worker in workerList)
-                            {
-                                if (worker.Speciality == cropTyp)
-                                {
-                                    crop.AddCrop(cropQuantity * 2);
-                                    break;
-                                }
-                            }
-                            crop.AddCrop(cropQuantity);
-                            break;
+                            worker1 = worker;
                         }
 
-                        else 
-                        {
-                            listOfCrops.Add(new Crop(cropName, cropTyp, cropQuantity)); 
-                        }
                     }
+                    AddCrop(worker1);
                     break;
                 case "3":
                     viewCrops();
@@ -122,13 +106,29 @@ namespace _2023._10._16
         }
         private void AddCrop(Worker worker)
         {
-            foreach(Crop crop in listOfCrops) 
+            Console.WriteLine("Write a typ of crop you want to add");
+            string cropTyp = Console.ReadLine();
+            Console.WriteLine("Write a quantity of crop");
+            int cropQuantity = int.Parse(Console.ReadLine());
+
+            foreach (Crop crop in listOfCrops)
             {
-                if (crop.CropTyp == worker.Speciality)
+                if (cropTyp == crop.CropTyp && worker.Speciality == cropTyp)
                 {
 
+                    crop.AddCrop(cropQuantity * 2);
+                    break;
+                }
+                else if (cropTyp == crop.CropTyp)
+                {
+                    crop.AddCrop(cropQuantity);
+                }
+                else
+                {
+                    listOfCrops.Add(new Crop(cropTyp, cropTyp, cropQuantity));
                 }
             }
+
 
         }
          
