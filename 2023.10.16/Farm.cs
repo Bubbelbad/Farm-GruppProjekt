@@ -45,7 +45,7 @@ namespace _2023._10._16
                             cropManager.cropManager(workManager.listOfWorkers);
                             break;
                         case 4:
-                            animalManager.AnimalMenu(buildingManager.listOfFarmBuildings, workManager.listOfWorkers, cropManager.GetCrops());
+                            animalManager.AnimalMenu(buildingManager.GetBuildings(), workManager.listOfWorkers, cropManager.GetCrops());
                             break;
                         default:
                             Console.WriteLine("Vänligen skriv en siffra mellan 1 - 4");
