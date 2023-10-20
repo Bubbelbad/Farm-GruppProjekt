@@ -23,7 +23,7 @@ namespace _2023._10._16
 
         
 
-        public List<Crop> listOfCrops = new List<Crop>();
+       
         public void AddCrop(int cropQuantity)
         {
            
@@ -31,13 +31,39 @@ namespace _2023._10._16
             
  
         }
-
+        List<Crop> listOfCrops = new List<Crop>();
 
 
         public bool TakeCrop(int num) 
         {
+            foreach (Crop crop in listOfCrops)
+            {
+                Console.WriteLine(crop.GetDescription());
+                if (num == crop.Id)
+                {
+                    Console.WriteLine("This Crop exist");
+                    Console.WriteLine("How much crop do you need?");
+                    int num1 = int.Parse(crop.CropTyp);
+                    if (num1 <= crop.quantity) 
+                    {
+                        Console.WriteLine("you get this much crop " + num1);
+                        return true;
+                    }
+                    else if (num1 > crop.quantity)
+                    {
+                        Console.WriteLine(num1 + " this much crop thos not exist");
+                        return false;
+                    }
+                    return true;
+
+                }
+                else
+                {
+                    Console.WriteLine("this id thos not exist");
+                }
+
+            }
             return false;
-        
         }
     }
 }
