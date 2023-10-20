@@ -42,7 +42,7 @@ namespace _2023._10._16
                             workManager.workManager();
                             break;
                         case 3:
-                            cropManager.cropManager(workManager.getWorkers());
+                            cropManager.cropManager(workManager.listOfWorkers);
                             break;
                         case 4:
                             animalManager.AnimalMenu(buildingManager.listOfFarmBuildings, workManager.listOfWorkers, cropManager.GetCrops());

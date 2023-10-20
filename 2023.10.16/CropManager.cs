@@ -14,10 +14,6 @@ namespace _2023._10._16
 
 
         
-        /*Förlåt men vi kan inte ha en workmanager i den här klassen! 
-        En ledtråd - kolla på CropManager i klass-diagrammet.
-        Där kan du nog se hur vi ska nå workManager.GetWorker()   ;) */
-
 
         public CropManager() 
         {
@@ -27,7 +23,7 @@ namespace _2023._10._16
             listOfCrops.Add(new Crop("Cheeseballs", "Cheeseballs", 300));
         }
 
-        //Du behöver göra om den här enligt klassdiagrammet <----
+       
         public void cropManager(List<Worker> workers)
         {
             Console.WriteLine("Welcam to corp manager what do you like to do?");
@@ -49,6 +45,7 @@ namespace _2023._10._16
                         Console.WriteLine(worker.GetDescription());
                     }
                     Console.WriteLine("Write a id number of worker you want to use");
+                    int idNumber = int.Parse(Console.ReadLine());
                     Console.WriteLine("Write a name of Crop you want to add");
                     string cropName = Console.ReadLine();
                     Console.WriteLine("Write a typ of crop you want to add");
