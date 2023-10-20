@@ -20,7 +20,7 @@ namespace _2023._10._16
             listOfWorkers.Add(new Worker("Bob", "Cheeseballs"));
 
         }
-        public void workManager()
+        public void WorkMany()
         {
             
             Console.WriteLine("Welcam to work manager what do you like to do?");
@@ -34,11 +34,12 @@ namespace _2023._10._16
             {
                 case "1":
                     viewWorkers();
-                    workManager();
+                    Console.WriteLine("Click to continue...");
+                    Console.ReadLine();
                     break;
                 case "2":
                     addNewWorker();
-                    workManager();
+                    
                     break;
                 case "3":  
                   viewWorkers();
@@ -48,12 +49,12 @@ namespace _2023._10._16
                         Console.WriteLine("Write id number of user you want to remove: ");
                         int inputId = int.Parse(Console.ReadLine());
                         removeWorker(inputId);
-                        workManager();
+                        WorkMany();
                         break;
                    }
                    catch
                    {
-                        workManager();  
+                        WorkMany();  
                    }
                    
                 break;
@@ -103,10 +104,10 @@ namespace _2023._10._16
         }
 
         //Den här funktionen måste returnera listan!
-        public List<Worker> getWorkers()
+        public List<Worker> GetWorkers()
         {
           
-            return new List<Worker>();
+            return  listOfWorkers;
         }
     }
 }

@@ -21,13 +21,14 @@ namespace _2023._10._16
             return $"Id: {Id} crop: {CropTyp} quantity: {quantity}";
         }
 
-        //Här behövs det två extra funktioner: 
+        
 
         public List<Crop> listOfCrops = new List<Crop>();
         public void AddCrop(int cropQuantity)
         {
-            
+           
                 quantity = quantity + cropQuantity;
+            
  
         }
 

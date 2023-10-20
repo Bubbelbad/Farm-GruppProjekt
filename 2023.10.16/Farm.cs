@@ -39,10 +39,10 @@ namespace _2023._10._16
                             buildingManager.BuildingMenu();
                             break;
                         case 2:
-                            workManager.workManager();
+                            workManager.WorkMany();
                             break;
                         case 3:
-                            cropManager.cropManager(workManager.listOfWorkers);
+                            cropManager.CropMany(workManager.GetWorkers());
                             break;
                         case 4:
                             animalManager.AnimalMenu(buildingManager.GetBuildings(), workManager.listOfWorkers, cropManager.GetCrops());

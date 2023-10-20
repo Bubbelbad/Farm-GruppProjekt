@@ -24,7 +24,7 @@ namespace _2023._10._16
         }
 
        
-        public void cropManager(List<Worker> workers)
+        public void CropMany(List<Worker> workerList)
         {
             Console.WriteLine("Welcam to corp manager what do you like to do?");
             Console.WriteLine("Press 1 if you want to see all corps");
@@ -35,17 +35,20 @@ namespace _2023._10._16
             switch (userInput)
             {
                 case "1":
-                    viewCrops();
-                    
-                break;
+
+                 viewCrops();
+                    Console.WriteLine("Click to continue...");
+                    Console.ReadLine();
+                    break;
 
                 case "2":
-                    foreach(Worker worker in workers)
+                    foreach(Worker worker in workerList)
                     {
                         Console.WriteLine(worker.GetDescription());
                     }
+
                     Console.WriteLine("Write a id number of worker you want to use");
-                    int idNumber = int.Parse(Console.ReadLine());
+                    int idWorker = int.Parse(Console.ReadLine());
                     Console.WriteLine("Write a name of Crop you want to add");
                     string cropName = Console.ReadLine();
                     Console.WriteLine("Write a typ of crop you want to add");
@@ -56,10 +59,19 @@ namespace _2023._10._16
                     {
                         if (cropTyp == crop.CropTyp)
                         {
+                            foreach(Worker worker in workerList)
+                            {
+                                if (worker.Speciality == cropTyp)
+                                {
+                                    crop.AddCrop(cropQuantity * 2);
+                                    break;
+                                }
+                            }
                             crop.AddCrop(cropQuantity);
                             break;
                         }
-                        else
+
+                        else 
                         {
                             listOfCrops.Add(new Crop(cropName, cropTyp, cropQuantity)); 
                         }
@@ -94,7 +106,7 @@ namespace _2023._10._16
         {
             foreach(Crop crop in listOfCrops)
             {
-                Console.WriteLine(crop.GetDescription());
+                Console.WriteLine(crop.GetDescription() + "\n");
             }
         }
         private void removeCrop(int number)
@@ -108,13 +120,23 @@ namespace _2023._10._16
                 }
             }
         }
+        private void AddCrop(Worker worker)
+        {
+            foreach(Crop crop in listOfCrops) 
+            {
+                if (crop.CropTyp == worker.Speciality)
+                {
 
+                }
+            }
+
+        }
          
-        //Den här funktionen behöver bara returnera listan, inte skriva ut den också! 
+        
         public List<Crop> GetCrops()
         {
             
-            return new List<Crop>();
+            return listOfCrops;
         }
         
     }
