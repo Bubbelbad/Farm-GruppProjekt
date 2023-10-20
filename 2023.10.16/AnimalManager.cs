@@ -72,12 +72,10 @@ namespace _2023._10._16
                                             if (farm.Id == farmId)
                                             {
                                                 AddAnimal(farm);
-                                            }
-                                            else
-                                            {
-                                                Console.WriteLine("The farm you entered do not exist.\nTry again: ");
+                                                break;
                                             }
                                         }
+                                        break;
                                     }
                                     catch
                                     {
@@ -154,7 +152,22 @@ namespace _2023._10._16
                             try
                             {
                                 int choice = int.Parse(Console.ReadLine());
-                                RemoveAnimal(choice);
+                                Animal animal1 = null;
+                                foreach(Animal animal in listOfAnimals)
+                                {
+                                    if (animal.Id == choice)
+                                    {
+                                        animal1 = animal;
+                                    }
+                                }
+                                foreach(FarmBuilding farm in farmList)
+                                {
+                                    if (farm.animalList.Contains(animal1))
+                                    {
+                                        farm.animalList.Remove(animal1);
+                                        RemoveAnimal(choice);
+                                    }
+                                }
                             }
                             catch
                             {
@@ -208,7 +221,6 @@ namespace _2023._10._16
                                         worker1 = worker;
                                     }
                                 }
-
                                 FeedAnimals(cropName, worker1, crop1); //Actually feeding the animal
                                 
                             }
@@ -239,11 +251,9 @@ namespace _2023._10._16
 
         private void ViewAnimals() //Iterating through the list and showing all the animals.
         {
-            Console.Clear();
             if (listOfAnimals.Count == 0)
             {
-                Console.WriteLine("There are no animals to view.\n" +
-                                  "Try adding some!\n");
+                Console.WriteLine(">> There are no animals to view - try adding some!\n");
             }
             else
             {
@@ -251,10 +261,7 @@ namespace _2023._10._16
                 {
                     Console.WriteLine(listOfAnimals[i].GetDescription());
                 }
-
             }
-            Console.WriteLine("Click to continue...");
-            Console.ReadLine();
         }
 
 
@@ -271,10 +278,11 @@ namespace _2023._10._16
             int index = listOfAnimals.Count - 1; //Finding the animal that was just added to listOfAnimals
             farmbuilding.AddAnimal(listOfAnimals[index]); //Adding it to the farmbuilding. 
 
-            Console.WriteLine($"{name} has been added to farm with Id {farmbuilding.Id}");
+            Console.WriteLine($"{name} has been added to farm with Id {farmbuilding.Id}\n");
+            Console.WriteLine("Click to continue...");
+            Console.ReadLine();
 
             return true;
-
         }
 
 
