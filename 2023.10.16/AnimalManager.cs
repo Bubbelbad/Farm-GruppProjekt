@@ -8,7 +8,7 @@ namespace _2023._10._16
 {
     internal class AnimalManager
     {
-        public List<Animal> listOfAnimals = new List<Animal>();
+        List<Animal> listOfAnimals = new List<Animal>();
 
         public AnimalManager()
         {
@@ -185,12 +185,8 @@ namespace _2023._10._16
                             {
                                 if (animal.Species == species)
                                 {
-                                    foreach (Crop crop in cropList)
-                                    {
-                                        Console.WriteLine(crop.GetDescription());
-                                    }
+                                    Console.WriteLine("You have chosen an existing species.");
                                 }
-                                Console.Clear();
                                 Console.WriteLine("What kind of crop do you want to feed the animal? (Choose by name)\n"); //To choose crop type
                                 foreach (Crop crop in cropList)
                                 {
@@ -324,9 +320,14 @@ namespace _2023._10._16
         {
             foreach (Animal animal in listOfAnimals)
             {
-                if (animal.Species == species)
+                if (animal.Species == species && worker.Speciality == crop.CropTyp)
                 {
+                    Console.WriteLine("The animals are happy because this was the workers speciality.");
                     animal.Feed(crop);
+                }
+                else if (animal.Species == crop.CropTyp)
+                {
+                    Console.WriteLine("The animal was not fed a special treat, but is happy.");
                 }
             }
             Console.WriteLine("Just to make sure we get here...");

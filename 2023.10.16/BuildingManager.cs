@@ -10,7 +10,7 @@ namespace _2023._10._16
     internal class BuildingManager
     {
 
-        public List<FarmBuilding> listOfFarmBuildings = new List<FarmBuilding>();
+        List<FarmBuilding> listOfFarmBuildings = new List<FarmBuilding>();
 
 
 
@@ -156,7 +156,7 @@ namespace _2023._10._16
         }
 
 
-        public List<FarmBuilding> GetBuildings()    
+        public List<FarmBuilding> GetBuildings() //Function to get the list   
         {
             return listOfFarmBuildings;
         }
