@@ -156,9 +156,7 @@ namespace _2023._10._16
         }
 
 
-
-        //I need to have a look at this. Can I use this instead of the other list? Probably...
-        public List<FarmBuilding> GetBuildings()    //This I'm not sure what it's supposed to do ??? <<<<<--------------------------
+        public List<FarmBuilding> GetBuildings()    
         {
             return new List<FarmBuilding>();
         }

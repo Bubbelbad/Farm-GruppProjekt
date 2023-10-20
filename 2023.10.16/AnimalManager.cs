@@ -38,10 +38,7 @@ namespace _2023._10._16
                     {   
                         //Function to see all animals:
                         case 1:          
-                            Console.Clear();
                             ViewAnimals();
-                            Console.WriteLine("Click to continue...");
-                            Console.ReadLine();
                             break;
 
 
@@ -63,21 +60,28 @@ namespace _2023._10._16
                                 {
                                     Console.WriteLine(farm.GetDescription());
                                 }
-                                bool status2 = false;
 
+                                bool status2 = false;
                                 while (!status2)
                                 {
-                                    int farmId = int.Parse(Console.ReadLine());
-                                    foreach (FarmBuilding farm in farmList) //If the choice by Id exists, we go to function AddAnimal()
+                                    try
                                     {
-                                        if (farm.Id == farmId)
+                                        int farmId = int.Parse(Console.ReadLine());
+                                        foreach (FarmBuilding farm in farmList) //If the choice by Id exists, we go to function AddAnimal()
                                         {
-                                            AddAnimal(farm);
+                                            if (farm.Id == farmId)
+                                            {
+                                                AddAnimal(farm);
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("The farm you entered do not exist.\nTry again: ");
+                                            }
                                         }
-                                        else
-                                        {
-                                            Console.WriteLine("The farm you entered do not exist.\nTry again: ");
-                                        }
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine("Please enter a number of existing farm Id's");
                                     }
                                 }
                             }
@@ -235,6 +239,7 @@ namespace _2023._10._16
 
         private void ViewAnimals() //Iterating through the list and showing all the animals.
         {
+            Console.Clear();
             if (listOfAnimals.Count == 0)
             {
                 Console.WriteLine("There are no animals to view.\n" +
@@ -246,7 +251,10 @@ namespace _2023._10._16
                 {
                     Console.WriteLine(listOfAnimals[i].GetDescription());
                 }
+
             }
+            Console.WriteLine("Click to continue...");
+            Console.ReadLine();
         }
 
 

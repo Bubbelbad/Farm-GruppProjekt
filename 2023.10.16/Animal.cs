@@ -39,7 +39,7 @@ namespace _2023._10._16
                     Console.WriteLine("The animal has been fed.");
                 }
             }
-            
+            //Animal ska här kalla på TakeCrop
         }
     }
 }
