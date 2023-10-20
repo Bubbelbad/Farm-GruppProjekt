@@ -13,7 +13,7 @@ namespace _2023._10._16
         List<Crop> listOfCrops = new List<Crop>();
 
 
-        public WorkManager workManager = new WorkManager();
+        
         /*Förlåt men vi kan inte ha en workmanager i den här klassen! 
         En ledtråd - kolla på CropManager i klass-diagrammet.
         Där kan du nog se hur vi ska nå workManager.GetWorker()   ;) */
@@ -28,7 +28,7 @@ namespace _2023._10._16
         }
 
         //Du behöver göra om den här enligt klassdiagrammet <----
-        public void cropManager()
+        public void cropManager(List<Worker> workers)
         {
             Console.WriteLine("Welcam to corp manager what do you like to do?");
             Console.WriteLine("Press 1 if you want to see all corps");
@@ -40,11 +40,14 @@ namespace _2023._10._16
             {
                 case "1":
                     viewCrops();
-                    cropManager();
+                    
                 break;
 
                 case "2":
-                    workManager.getWorkers(); 
+                    foreach(Worker worker in workers)
+                    {
+                        Console.WriteLine(worker.GetDescription());
+                    }
                     Console.WriteLine("Write a id number of worker you want to use");
                     Console.WriteLine("Write a name of Crop you want to add");
                     string cropName = Console.ReadLine();
@@ -72,12 +75,12 @@ namespace _2023._10._16
                         Console.WriteLine("Write id number of crop you want to remove: ");
                         int inputId = int.Parse(Console.ReadLine());
                         removeCrop(inputId);
-                        cropManager();
+                        
                         break;
                     }
                     catch
                     {
-                        cropManager();
+                        
                     }
                     break;
                     
@@ -113,11 +116,7 @@ namespace _2023._10._16
         //Den här funktionen behöver bara returnera listan, inte skriva ut den också! 
         public List<Crop> GetCrops()
         {
-
-            foreach(Crop crop in listOfCrops)
-            {
-                Console.WriteLine(crop.GetDescription());
-            }
+            
             return new List<Crop>();
         }
         

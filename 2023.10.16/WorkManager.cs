@@ -105,10 +105,7 @@ namespace _2023._10._16
         //Den här funktionen måste returnera listan!
         public List<Worker> getWorkers()
         {
-           foreach( Worker worker in listOfWorkers)
-            {
-                Console.WriteLine(worker.GetDescription());
-            }
+          
             return new List<Worker>();
         }
     }
