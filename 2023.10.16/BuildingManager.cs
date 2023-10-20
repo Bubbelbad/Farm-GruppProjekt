@@ -158,7 +158,7 @@ namespace _2023._10._16
 
         public List<FarmBuilding> GetBuildings()    
         {
-            return new List<FarmBuilding>();
+            return listOfFarmBuildings;
         }
     }
 }

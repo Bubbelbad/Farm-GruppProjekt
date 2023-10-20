@@ -28,16 +28,16 @@ namespace _2023._10._16
         }
 
 
-
+        //Hur ska jag få med in hur många av crop jag ska skörda här? Eftersom jag bara har Crop i parametern. 
         //This is not done yet! To be continued.
-        public void Feed(Crop crop) //To feed Coprs to the Animal.
+        public void Feed(Crop crop) //To feed Corpses to the Animal.
         {
             foreach (string acceptableCrop in AcceptableCropTypes)
             {
                 if (acceptableCrop == crop.CropTyp)
                 {
-                    Console.WriteLine("The animal has been fed.");
-                }
+                    crop.TakeCrop(1);    
+                }    
             }
             //Animal ska här kalla på TakeCrop
         }
