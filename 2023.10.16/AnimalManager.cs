@@ -179,48 +179,60 @@ namespace _2023._10._16
                         //Function to feed an animal:
                         case 5:
                             Console.Clear();
+                            Console.WriteLine("List of existing species:\n");
+                            foreach (Animal animal in listOfAnimals)
+                            {
+                                Console.WriteLine("- " + animal.Species);
+                            }
                             Console.WriteLine("What kind of animal do you want to feed?");  //To choose species of animal
                             string species = Console.ReadLine();
+                            Console.Clear();
+
                             foreach (Animal animal in listOfAnimals)
                             {
                                 if (animal.Species == species)
                                 {
                                     Console.WriteLine("You have chosen an existing species.");
                                 }
-                                Console.WriteLine("What kind of crop do you want to feed the animal? (Choose by name)\n"); //To choose crop type
-                                foreach (Crop crop in cropList)
+                                else if (animal.Species != species)
                                 {
-                                    Console.WriteLine(crop.GetDescription());
+                                    Console.WriteLine("Please choose an existing specie...");
                                 }
-                                string cropName = Console.ReadLine();
-                                Crop crop1 = null;
-                                foreach (Crop crop in cropList)
-                                {
-                                    if (cropName == crop.CropTyp)
-                                    {
-                                        crop1 = crop;
-                                    }
-                                }
-
-                                Console.Clear();
-                                Console.WriteLine("What worker should obey and feed the animal? (Choose by Id)\n"); //To choose worker
-                                Worker worker1 = null;
-                                foreach (Worker worker in workerList)
-                                {
-                                    Console.WriteLine(worker.GetDescription());
-                                }
-                                int workerChoice = int.Parse(Console.ReadLine());
-                                foreach (Worker worker in workerList)
-                                {
-                                    if (workerChoice == worker.Id)
-                                    {
-                                        worker1 = worker;
-                                    }
-                                }
-                                FeedAnimals(cropName, worker1, crop1); //Actually feeding the animal
-                                
                             }
-                            break;
+
+                            Console.WriteLine("What kind of crop do you want to feed the animal? (Choose by name)\n"); //To choose crop type
+                            foreach (Crop crop in cropList)
+                            {
+                                    Console.WriteLine(crop.GetDescription());
+                            }
+                            int cropId = int.Parse(Console.ReadLine());
+                            Crop crop1 = null;
+                            foreach (Crop crop in cropList)
+                            {
+                                if (cropId == crop.Id)
+                                {
+                                    crop1 = crop;
+                                }
+                            }
+
+                            Console.Clear();
+                            Console.WriteLine("What worker should obey and feed the animal? (Choose by Id)\n"); //To choose worker
+                            Worker worker1 = null;
+                            foreach (Worker worker in workerList)
+                            {
+                                Console.WriteLine(worker.GetDescription());
+                            }
+                            int workerChoice = int.Parse(Console.ReadLine());
+                            foreach (Worker worker in workerList)
+                            {
+                                if (workerChoice == worker.Id)
+                                {
+                                    worker1 = worker;
+                                }
+                            }
+                            FeedAnimals(species, worker1, crop1); //Actually feeding the animal
+                                
+                        break;
 
 
                         //Return to animal main menu:
@@ -314,9 +326,9 @@ namespace _2023._10._16
         }
 
 
-        //Funtion to feed animal - this is not done yet!
-        //Still need improvement and integration to crop...
-        private void FeedAnimals(string species, Worker worker, Crop crop)
+
+  
+        private void FeedAnimals(string species, Worker worker, Crop crop) //Funtion to feed the animals.
         {
             foreach (Animal animal in listOfAnimals)
             {
@@ -325,12 +337,11 @@ namespace _2023._10._16
                     Console.WriteLine("The animals are happy because this was the workers speciality.");
                     animal.Feed(crop);
                 }
-                else if (animal.Species == crop.CropTyp)
+                else if (animal.Species == species)
                 {
-                    Console.WriteLine("The animal was not fed a special treat, but is happy.");
+                    Console.WriteLine("The animal wasn't excited over the chefs work, but is at least fed.");
                 }
             }
-            Console.WriteLine("Just to make sure we get here...");
             Console.WriteLine("Click to continue...");
             Console.ReadLine();
         }

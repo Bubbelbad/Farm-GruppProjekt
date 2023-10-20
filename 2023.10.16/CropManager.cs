@@ -22,6 +22,7 @@ namespace _2023._10._16
             listOfCrops.Add(new Crop("Leaves", "Leaves", 600));
             listOfCrops.Add(new Crop("Potatoes", "Potatoes", 400));
             listOfCrops.Add(new Crop("Cheeseballs", "Cheeseballs", 300));
+            listOfCrops.Add(new Crop("Coffee", "Coffee", 300));
         }
 
        

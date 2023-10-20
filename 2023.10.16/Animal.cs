@@ -37,9 +37,13 @@ namespace _2023._10._16
                 if (acceptableCrop == crop.CropTyp)
                 {
                     crop.TakeCrop(1);    
-                }    
+                }
+                else if (acceptableCrop != crop.CropTyp)
+                {
+                    Console.WriteLine("The animal refuses this kind of food. Unacceptable. ");
+                }
             }
-            //Animal ska här kalla på TakeCrop
+            //I need to get a way to print the stuff if the animal doesnt have this in acceptable CropTypes.. How? 
         }
     }
 }
