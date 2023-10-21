@@ -23,7 +23,7 @@ namespace _2023._10._16
 
         public override string GetDescription() //Function to show the animals descriptions. 
         {
-            return $"Id: {Id} \nName: {Name} \nCapacity: {Capacity}\nAnimals: {animalList.Count}";
+            return $"Id: {Id} \nName: {Name} \nCapacity: {Capacity}\nAnimals: {animalList.Count}\n";
         }
 
    

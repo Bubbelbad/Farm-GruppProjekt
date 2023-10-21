@@ -37,7 +37,8 @@ namespace _2023._10._16
                     switch (answer)
                     {   
                         //Function to see all animals:
-                        case 1:          
+                        case 1:
+                            Console.Clear();
                             ViewAnimals();
                             break;
 
@@ -67,6 +68,7 @@ namespace _2023._10._16
                                     try
                                     {
                                         int farmId = int.Parse(Console.ReadLine());
+                                        Console.Clear();
                                         foreach (FarmBuilding farm in farmList) //If the choice by Id exists, we go to function AddAnimal()
                                         {
                                             if (farm.Id == farmId)
@@ -85,9 +87,10 @@ namespace _2023._10._16
                             }
                             break;
 
-
+                        //This function doesnt work properly... Have a look again!
                         //Function to switch, put animal in another building:
                         case 3:
+                            Console.Clear();
                             Console.WriteLine("What animal do you want to switch building?\n"); //To choose animal
                             ViewAnimals();
                             int id = int.Parse(Console.ReadLine());
@@ -265,11 +268,14 @@ namespace _2023._10._16
             }
             else
             {
+                Console.WriteLine("List of available Animals: \n");
                 for (int i = 0; i < listOfAnimals.Count; i++)
                 {
                     Console.WriteLine(listOfAnimals[i].GetDescription());
                 }
             }
+            Console.WriteLine("Click to continue...");
+            Console.ReadLine();
         }
 
 
@@ -286,7 +292,7 @@ namespace _2023._10._16
             int index = listOfAnimals.Count - 1; //Finding the animal that was just added to listOfAnimals
             farmbuilding.AddAnimal(listOfAnimals[index]); //Adding it to the farmbuilding. 
 
-            Console.WriteLine($"{name} has been added to farm with Id {farmbuilding.Id}\n");
+            Console.WriteLine($"\n>> {name} has been added to farm with Id {farmbuilding.Id}\n");
             Console.WriteLine("Click to continue...");
             Console.ReadLine();
 
@@ -294,6 +300,7 @@ namespace _2023._10._16
         }
 
 
+        //Something might be wrong here.. Have a look again to be sure.
         private bool SwitchBuilding(Animal animal, FarmBuilding farmbuilding) //SwitchBuilding tar Id't av vilket djur skall
                                                                               //byta byggnad och Id't från byggnaden djuret ska till.
         {
@@ -326,8 +333,7 @@ namespace _2023._10._16
         }
 
 
-
-  
+        //Not sure if this is done or working properly.. need to have a look later again.
         private void FeedAnimals(string species, Worker worker, Crop crop) //Funtion to feed the animals.
         {
             foreach (Animal animal in listOfAnimals)
