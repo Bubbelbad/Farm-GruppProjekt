@@ -1,10 +1,10 @@
 # 2023.10.16
 
-Ett projekt för att öva parprogrammering. 
+Ett projekt för att öva parprogrammering mellan @Bubbelbad och @BranislavDokic.
 
-Utifrån ett klass-diagram och en text med vaga beskrivningar har vi fått i uppfigt att utveckla ett program. 
-Vi har valde att dela upp projektets klasser i två delar och hjälpa varandra koda den andres del över Discord. 
+Vi har fått i uppgift att utveckla ett program från ett redan existerande Klass-Diagram, samt en tillhörande relativt vag beskrivning. 
+Vi delade upp klasserna emellan oss och hjälpte varandra koda den andres del över Discord. 
 
-Största utmaningen var att bygga programmet utifrån klassdiagrammet, då vi gärna hade skrivit det på ett annat sätt. 
+Största utmaningen var att förstå hur det var tänkt med alla funktioner och se till att menyerna fick listor med objekt från de olika klasserna. 
 
-Det blev en bra övning i att utveckla från en grund som någon annan har lagt, utöver själva parprogrammeringen. 
+Det blev en bra övning i att utveckla från en grund någon annan lagt utöver själva parprogrammeringen. 
