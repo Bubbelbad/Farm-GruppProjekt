@@ -120,7 +120,7 @@ namespace _2023._10._16
             {
                 int capacity = int.Parse(Console.ReadLine());
                 listOfFarmBuildings.Add(new FarmBuilding(capacity, name));
-                Console.WriteLine("Click to continue...");
+                Console.WriteLine("\nClick to continue...");
                 Console.ReadLine();
             }
             catch

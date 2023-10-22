@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,6 +41,8 @@ namespace _2023._10._16
                         case 1:
                             Console.Clear();
                             ViewAnimals();
+                            Console.WriteLine("\nClick to continue...");
+                            Console.ReadLine();
                             break;
 
 
@@ -91,61 +94,86 @@ namespace _2023._10._16
                         //Function to switch, put animal in another building:
                         case 3:
                             Console.Clear();
-                            Console.WriteLine("What animal do you want to switch building?\n"); //To choose animal
-                            ViewAnimals();
-                            int id = int.Parse(Console.ReadLine());
+                            bool status3 = false;
                             Animal animalChoice = null;
-                            foreach(Animal animal in listOfAnimals)
+                            FarmBuilding farmChoice2 = null;
+                            while (!status3)
                             {
-                                if (animal.Id == id)
+                                Console.WriteLine("What animal do you want to switch building?\n"); //To choose animal
+                                ViewAnimals();
+                                int id = int.Parse(Console.ReadLine());
+                                try
                                 {
-                                    animalChoice = animal;
+                                    foreach (Animal animal in listOfAnimals)
+                                    {
+                                        if (animal.Id == id)
+                                        {
+                                            animalChoice = animal;
 
-                                    foreach (FarmBuilding building in farmList)                /*To remove animal from current building. 
+                                            foreach (FarmBuilding building in farmList)                /*To remove animal from current building. 
                                                                                                  Here is one problem! I do not know if the next 
                                                                                                  Farm has any space, and if not the animal is still removed. */
-                                    {
-                                        if (building.animalList.Contains(animalChoice))
+                                            {
+                                                if (building.animalList.Contains(animalChoice))
+                                                {
+                                                    building.animalList.Remove(animalChoice);
+                                                }
+                                            }
+                                        }
+                                        else
                                         {
-                                            building.animalList.Remove(animalChoice);
+                                            Console.WriteLine("There is no animal with that Id...");
                                         }
                                     }
                                 }
-                            }
-
-                            Console.Clear();
-                            Console.WriteLine("What building do you want the animal to go into?\n\n"); //To choose building
-                            foreach (FarmBuilding farm in farmList)
-                            {
-                                Console.WriteLine(farm.GetDescription());
-                            }
-                            int id2 = int.Parse(Console.ReadLine());
-                            FarmBuilding farmChoice2 = null;
-                            foreach (FarmBuilding farm in farmList)
-                            {
-                                if (farm.Id == id2)
+                                catch
                                 {
-                                    farmChoice2 = farm;
+                                    Console.WriteLine("Please write an Id of the animal.");
+                                }
+
+                                Console.Clear();
+                                Console.WriteLine("What building do you want the animal to go into?\n\n"); //To choose building
+                                foreach (FarmBuilding farm in farmList)
+                                {
+                                    Console.WriteLine(farm.GetDescription());
+                                }
+                                try
+                                {
+                                    int id2 = int.Parse(Console.ReadLine());
+                                    foreach (FarmBuilding farm in farmList)
+                                    {
+                                        if (farm.Id == id2)
+                                        {
+                                            farmChoice2 = farm;
+                                        }
+                                    }
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("There is no farm with that Id...try again!");
+                                }
+
+
+                                bool change = SwitchBuilding(animalChoice, farmChoice2); //To do the deed, changing the building
+                                if (change)
+                                {
+                                    Console.WriteLine($"The desired animal of Id: {animalChoice.Id} has switched to the building of Id: {farmChoice2.Id}\n");
+                                    Console.WriteLine("Click to continue...");
+                                    Console.ReadLine();
+                                    status3 = true;
+                                }
+                                else if (!change)
+                                {
+                                    Console.WriteLine($"The farm with Id: {farmChoice2.Id} is full\n" +
+                                                      $"Please remove relocate or remove animals before trying again.\n");
+                                    Console.WriteLine("Click to continue...");
+                                    Console.ReadLine();
+                                    status3 = true;
                                 }
                             }
-
-
-                            bool change = SwitchBuilding(animalChoice, farmChoice2); //To do the deed, changing the building
-                            if (change)
-                            {
-                                Console.WriteLine($"The desired animal of Id: {animalChoice.Id} has switched to the building of Id: {farmChoice2.Id}\n");
-                                Console.WriteLine("Click to continue...");
-                                Console.ReadLine();
-                            }
-                            else if (!change)
-                            {
-                                Console.WriteLine($"The farm with Id: {farmChoice2.Id} is full\n" +
-                                                  $"Please remove relocate or remove animals before trying again.\n");
-                                Console.WriteLine("Click to continue...");
-                                Console.ReadLine();
-                            }
-                            break;
-
+                             break;
+                            
+                            
 
                         //Function to remove an animal:
                         case 4:
@@ -274,8 +302,6 @@ namespace _2023._10._16
                     Console.WriteLine(listOfAnimals[i].GetDescription());
                 }
             }
-            Console.WriteLine("Click to continue...");
-            Console.ReadLine();
         }
 
 
