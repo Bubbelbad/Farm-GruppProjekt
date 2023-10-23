@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,8 +38,11 @@ namespace _2023._10._16
                     switch (answer)
                     {   
                         //Function to see all animals:
-                        case 1:          
+                        case 1:
+                            Console.Clear();
                             ViewAnimals();
+                            Console.WriteLine("\nClick to continue...");
+                            Console.ReadLine();
                             break;
 
 
@@ -67,6 +71,7 @@ namespace _2023._10._16
                                     try
                                     {
                                         int farmId = int.Parse(Console.ReadLine());
+                                        Console.Clear();
                                         foreach (FarmBuilding farm in farmList) //If the choice by Id exists, we go to function AddAnimal()
                                         {
                                             if (farm.Id == farmId)
@@ -85,64 +90,93 @@ namespace _2023._10._16
                             }
                             break;
 
-
+                        //This function doesnt work properly... Have a look again!
+                        //Neeeds a failsafe in case farm of choice doesnt exist.
                         //Function to switch, put animal in another building:
                         case 3:
-                            Console.WriteLine("What animal do you want to switch building?\n"); //To choose animal
-                            ViewAnimals();
-                            int id = int.Parse(Console.ReadLine());
+                            Console.Clear();
+                            bool status3 = false;
                             Animal animalChoice = null;
-                            foreach(Animal animal in listOfAnimals)
+                            FarmBuilding newFarmChoice = null;
+                            FarmBuilding oldFarm = null;
+                            while (!status3)
                             {
-                                if (animal.Id == id)
+                                Console.WriteLine("What animal do you want to switch building?\n"); //To choose animal
+                                ViewAnimals();
+                                int id = int.Parse(Console.ReadLine());
+                                try
                                 {
-                                    animalChoice = animal;
-
-                                    foreach (FarmBuilding building in farmList)                /*To remove animal from current building. 
-                                                                                                 Here is one problem! I do not know if the next 
-                                                                                                 Farm has any space, and if not the animal is still removed. */
+                                    foreach (Animal animal in listOfAnimals)
                                     {
-                                        if (building.animalList.Contains(animalChoice))
+                                        if (animal.Id == id)
                                         {
-                                            building.animalList.Remove(animalChoice);
+                                            animalChoice = animal;
+
+                                            foreach (FarmBuilding building in farmList)           
+                                                                                                 
+                                                                                                 
+                                            {
+                                                if (building.animalList.Contains(animalChoice))
+                                                {
+                                                    building.animalList.Remove(animalChoice);
+                                                    oldFarm = building;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("There is no animal with that Id...");
                                         }
                                     }
                                 }
-                            }
-
-                            Console.Clear();
-                            Console.WriteLine("What building do you want the animal to go into?\n\n"); //To choose building
-                            foreach (FarmBuilding farm in farmList)
-                            {
-                                Console.WriteLine(farm.GetDescription());
-                            }
-                            int id2 = int.Parse(Console.ReadLine());
-                            FarmBuilding farmChoice2 = null;
-                            foreach (FarmBuilding farm in farmList)
-                            {
-                                if (farm.Id == id2)
+                                catch
                                 {
-                                    farmChoice2 = farm;
+                                    Console.WriteLine("Please write an Id of the animal.");
+                                }
+
+                                Console.Clear();   //Somtehing goes wrong here if you chose a farm that doesnt exist! Fix it. 
+                                Console.WriteLine("What building do you want the animal to go into?\n\n"); //To choose building
+                                foreach (FarmBuilding farm in farmList)
+                                {
+                                    Console.WriteLine(farm.GetDescription());
+                                }
+                                try
+                                {
+                                    int id2 = int.Parse(Console.ReadLine());
+                                    foreach (FarmBuilding farm in farmList)
+                                    {
+                                        if (farm.Id == id2)
+                                        {
+                                            newFarmChoice = farm;
+                                        }
+                                    }
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("There is no farm with that Id...try again!");
+                                }
+
+
+                                bool change = SwitchBuilding(animalChoice, newFarmChoice); //To do the deed, changing the building
+                                if (change)
+                                {
+                                    Console.WriteLine($"The desired animal of Id: {animalChoice.Id} has switched from building with Id: {oldFarm.Id} to the building of Id: {newFarmChoice.Id}\n");
+                                    Console.WriteLine("Click to continue...");
+                                    Console.ReadLine();
+                                    status3 = true;
+                                }
+                                else if (!change)
+                                {
+                                    Console.WriteLine($"The farm with Id: {newFarmChoice.Id} is full\n" +
+                                                      $"Please remove relocate or remove animals before trying again.\n");
+                                    Console.WriteLine("Click to continue...");
+                                    Console.ReadLine();
+                                    status3 = true;
                                 }
                             }
-
-
-                            bool change = SwitchBuilding(animalChoice, farmChoice2); //To do the deed, changing the building
-                            if (change)
-                            {
-                                Console.WriteLine($"The desired animal of Id: {animalChoice.Id} has switched to the building of Id: {farmChoice2.Id}\n");
-                                Console.WriteLine("Click to continue...");
-                                Console.ReadLine();
-                            }
-                            else if (!change)
-                            {
-                                Console.WriteLine($"The farm with Id: {farmChoice2.Id} is full\n" +
-                                                  $"Please remove relocate or remove animals before trying again.\n");
-                                Console.WriteLine("Click to continue...");
-                                Console.ReadLine();
-                            }
-                            break;
-
+                             break;
+                            
+                            
 
                         //Function to remove an animal:
                         case 4:
@@ -265,6 +299,7 @@ namespace _2023._10._16
             }
             else
             {
+                Console.WriteLine("List of available Animals: \n");
                 for (int i = 0; i < listOfAnimals.Count; i++)
                 {
                     Console.WriteLine(listOfAnimals[i].GetDescription());
@@ -286,7 +321,7 @@ namespace _2023._10._16
             int index = listOfAnimals.Count - 1; //Finding the animal that was just added to listOfAnimals
             farmbuilding.AddAnimal(listOfAnimals[index]); //Adding it to the farmbuilding. 
 
-            Console.WriteLine($"{name} has been added to farm with Id {farmbuilding.Id}\n");
+            Console.WriteLine($"\n>> {name} has been added to farm with Id {farmbuilding.Id}\n");
             Console.WriteLine("Click to continue...");
             Console.ReadLine();
 
@@ -294,6 +329,7 @@ namespace _2023._10._16
         }
 
 
+        //Something might be wrong here.. Have a look again to be sure.
         private bool SwitchBuilding(Animal animal, FarmBuilding farmbuilding) //SwitchBuilding tar Id't av vilket djur skall
                                                                               //byta byggnad och Id't från byggnaden djuret ska till.
         {
@@ -326,8 +362,7 @@ namespace _2023._10._16
         }
 
 
-
-  
+        //Not sure if this is done or working properly.. need to have a look later again.
         private void FeedAnimals(string species, Worker worker, Crop crop) //Funtion to feed the animals.
         {
             foreach (Animal animal in listOfAnimals)
