@@ -70,8 +70,6 @@ namespace _2023._10._16
                 Console.WriteLine("Click to continue...");
                 Console.ReadLine();
             }
-
-
         }
 
 

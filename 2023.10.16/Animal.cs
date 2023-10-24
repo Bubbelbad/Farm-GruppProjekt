@@ -10,13 +10,15 @@ namespace _2023._10._16
     {
         public string Species { get; set; }
 
-        private List<string> AcceptableCropTypes = new List<string> { "Grass", "Leaves", "Potatoes", "Cheeseballs" };
+        public List<string> AcceptableCropTypes = new List<string>();
 
 
 
-        public Animal(string species, string name) : base(name)
+        public Animal(string species, string name, string crop1, string crop2) : base(name)
         {
             this.Species = species;
+            this.AcceptableCropTypes.Add(crop1);
+            this.AcceptableCropTypes.Add(crop2);
         }
 
 
@@ -24,26 +26,17 @@ namespace _2023._10._16
 
         public override string GetDescription() //To return a description of the Animal
         {
-            return $"Id: {Id}\nSpecies: {Species} \nName: {Name} \n";
+            return $"Id: {Id}\nSpecies: {Species} \nName: {Name} " +
+                   $"\nFood 1: {AcceptableCropTypes[0]}\nFood 2: {AcceptableCropTypes[1]}";
         }
 
 
         //Hur ska jag få med in hur många av crop jag ska skörda här? Eftersom jag bara har Crop i parametern. 
         //This is not done yet! To be continued.
+
         public void Feed(Crop crop) //To feed Corpses to the Animal.
         {
-            foreach (string acceptableCrop in AcceptableCropTypes)
-            {
-                if (acceptableCrop == crop.CropTyp)
-                {
-                    crop.TakeCrop(1);    
-                }
-                else if (acceptableCrop != crop.CropTyp)
-                {
-                    Console.WriteLine("The animal refuses this kind of food. Unacceptable. ");
-                }
-            }
-            //I need to get a way to print the stuff if the animal doesnt have this in acceptable CropTypes.. How? 
+            crop.TakeCrop(1);     
         }
     }
 }

@@ -11,6 +11,7 @@ namespace _2023._10._16
     {
         List<Animal> listOfAnimals = new List<Animal>();
 
+      
         public AnimalManager()
         {
 
@@ -220,6 +221,7 @@ namespace _2023._10._16
                             }
                             Console.WriteLine("What kind of animal do you want to feed?");  //To choose species of animal
                             string species = Console.ReadLine();
+                            Animal animal2 = null;
                             Console.Clear();
 
                             foreach (Animal animal in listOfAnimals)
@@ -227,6 +229,7 @@ namespace _2023._10._16
                                 if (animal.Species == species)
                                 {
                                     Console.WriteLine("You have chosen an existing species.");
+                                    animal2 = animal;
                                 }
                                 else if (animal.Species != species)
                                 {
@@ -246,6 +249,7 @@ namespace _2023._10._16
                                 if (cropId == crop.Id)
                                 {
                                     crop1 = crop;
+                                   
                                 }
                             }
 
@@ -317,7 +321,13 @@ namespace _2023._10._16
             Console.WriteLine("What is the animals name?");
             string name = Console.ReadLine();
 
-            listOfAnimals.Add(new Animal(species, name));
+            Console.WriteLine("What is the animals favourite food?");
+            string food1 = Console.ReadLine();
+
+            Console.WriteLine("What is the animals second favourite food?");
+            string food2 = Console.ReadLine();
+
+            listOfAnimals.Add(new Animal(species, name, food1, food2));
             int index = listOfAnimals.Count - 1; //Finding the animal that was just added to listOfAnimals
             farmbuilding.AddAnimal(listOfAnimals[index]); //Adding it to the farmbuilding. 
 
@@ -345,7 +355,7 @@ namespace _2023._10._16
             }
         }
 
-
+        
         private void RemoveAnimal(int num) //Function to remove an animal 
         {
             foreach (Animal animal in listOfAnimals)
@@ -363,20 +373,35 @@ namespace _2023._10._16
 
 
         //Not sure if this is done or working properly.. need to have a look later again.
-        private void FeedAnimals(string species, Worker worker, Crop crop) //Funtion to feed the animals.
+        private void FeedAnimals(string species, Worker worker, Crop crop) //Function to feed the animals.
         {
+            Animal animal3 = null;
             foreach (Animal animal in listOfAnimals)
             {
-                if (animal.Species == species && worker.Speciality == crop.CropTyp)
+                if (animal.Species == species)
+                {
+                   animal3 = animal;
+                }
+            }
+            if (animal3.AcceptableCropTypes[0] == crop.CropTyp || animal3.AcceptableCropTypes[1] == crop.CropTyp)
+            {
+                if (animal3.Species == species && worker.Speciality == crop.CropTyp)
                 {
                     Console.WriteLine("The animals are happy because this was the workers speciality.");
-                    animal.Feed(crop);
+                    animal3.Feed(crop);
                 }
-                else if (animal.Species == species)
+                else if (animal3.Species == species)
                 {
                     Console.WriteLine("The animal wasn't excited over the chefs work, but is at least fed.");
                 }
             }
+            else
+            {
+                Console.WriteLine($"The animal cant eat that food. It's unacceptable for a {animal3.Species}!\n");
+            }
+            
+            
+            
             Console.WriteLine("Click to continue...");
             Console.ReadLine();
         }
