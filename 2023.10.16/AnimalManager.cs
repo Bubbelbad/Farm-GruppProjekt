@@ -400,8 +400,6 @@ namespace _2023._10._16
                 Console.WriteLine($"The animal cant eat that food. It's unacceptable for a {animal3.Species}!\n");
             }
             
-            
-            
             Console.WriteLine("Click to continue...");
             Console.ReadLine();
         }

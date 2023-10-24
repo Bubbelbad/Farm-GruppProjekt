@@ -10,7 +10,7 @@ namespace _2023._10._16
     {
         public string Species { get; set; }
 
-        public List<string> AcceptableCropTypes = new List<string>();
+        public List<string> AcceptableCropTypes = new List<string>(2);
 
 
 
@@ -27,8 +27,9 @@ namespace _2023._10._16
         public override string GetDescription() //To return a description of the Animal
         {
             return $"Id: {Id}\nSpecies: {Species} \nName: {Name} " +
-                   $"\nFood 1: {AcceptableCropTypes[0]}\nFood 2: {AcceptableCropTypes[1]}";
+                   $"\nFood 1: {AcceptableCropTypes[0]}\nFood 2: {AcceptableCropTypes[1]}\n";
         }
+
 
 
         //Hur ska jag få med in hur många av crop jag ska skörda här? Eftersom jag bara har Crop i parametern. 
