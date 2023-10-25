@@ -8,9 +8,7 @@ namespace _2023._10._16
 {
     internal class FarmBuilding : Entity
     {
-        public List<Animal> animalList = new List<Animal>();  
-
-
+        public List<Animal> animalList = new List<Animal>();
         private int Capacity { get; set; }
 
 
@@ -57,7 +55,7 @@ namespace _2023._10._16
         }
 
 
-        public void AddAnimal(Animal animal) //Adds animal to the animalList - KLAR
+        public void AddAnimal(Animal animal) //Adds animal to the animalList
         {
             if (!IsFull())
             {

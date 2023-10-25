@@ -14,7 +14,8 @@ namespace _2023._10._16
       
         public AnimalManager()
         {
-
+            listOfAnimals.Add(new Animal("Cow", "Larsa", "Grass", "Leaves"));
+            listOfAnimals.Add(new Animal("Sheep", "Leroy", "Knuckles", "Beans"));
         }
 
 
@@ -176,7 +177,6 @@ namespace _2023._10._16
                                 }
                             }
                              break;
-                            
                             
 
                         //Function to remove an animal:
@@ -372,7 +372,6 @@ namespace _2023._10._16
         }
 
 
-        //Not sure if this is done or working properly.. need to have a look later again.
         private void FeedAnimals(string species, Worker worker, Crop crop) //Function to feed the animals.
         {
             Animal animal3 = null;
@@ -384,7 +383,7 @@ namespace _2023._10._16
                 }
             }
             
-            if (worker.Speciality == crop.CropTyp) //Checking if it's the workers speciality to add a fitting end.
+            if (worker.Speciality == crop.CropTyp) //Checking if crop's the workers speciality to add a fitting end.
             {
                 animal3.Feed(crop); Console.Write(" was the workers speciality!");
             }
