@@ -10,7 +10,7 @@ namespace _2023._10._16
     {
         public string Species { get; set; }
 
-        public List<string> AcceptableCropTypes = new List<string>(2);
+        private List<string> AcceptableCropTypes = new List<string>();
 
 
 
@@ -37,7 +37,20 @@ namespace _2023._10._16
 
         public void Feed(Crop crop) //To feed Corpses to the Animal.
         {
-            crop.TakeCrop(1);     
+            foreach (string food in AcceptableCropTypes)
+            {
+                if (crop.CropTyp == food)
+                {
+                    if (crop.TakeCrop(1))
+                    {
+                        crop.TakeCrop(1);
+                        Console.Write("The animal ate the food and is happy because it");
+                        return;
+                    }
+                }
+            }
+            Console.WriteLine($"\nThe animal cant eat that food. It's unacceptable for a {this.Species}.");
+            Console.Write("The disappointment made it worse because this");
         }
     }
 }

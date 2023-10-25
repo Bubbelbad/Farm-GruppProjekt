@@ -383,24 +383,17 @@ namespace _2023._10._16
                    animal3 = animal;
                 }
             }
-            if (animal3.AcceptableCropTypes[0] == crop.CropTyp || animal3.AcceptableCropTypes[1] == crop.CropTyp)
+            
+            if (worker.Speciality == crop.CropTyp) //Checking if it's the workers speciality to add a fitting end.
             {
-                if (animal3.Species == species && worker.Speciality == crop.CropTyp)
-                {
-                    Console.WriteLine("The animals are happy because this was the workers speciality.");
-                    animal3.Feed(crop);
-                }
-                else if (animal3.Species == species)
-                {
-                    Console.WriteLine("The animal wasn't excited over the chefs work, but is at least fed.");
-                }
+                animal3.Feed(crop); Console.Write(" was the workers speciality!");
             }
             else
             {
-                Console.WriteLine($"The animal cant eat that food. It's unacceptable for a {animal3.Species}!\n");
+                animal3.Feed(crop); Console.Write(" gets to live another day. Mediocre taste tho :|");
             }
-            
-            Console.WriteLine("Click to continue...");
+          
+            Console.WriteLine("\n\nClick to continue...");
             Console.ReadLine();
         }
 
