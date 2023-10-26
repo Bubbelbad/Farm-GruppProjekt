@@ -41,16 +41,17 @@ namespace _2023._10._16
             {
                 if (crop.CropTyp == food)
                 {
-                    if (crop.TakeCrop(1))
+                    bool cropStatus = crop.TakeCrop(1);
+                    if (cropStatus)
                     {
-                        crop.TakeCrop(1);
+                        Console.Clear();
                         Console.Write("The animal ate the food and is happy because it");
-                        return;
-                    }
+                        return; 
+                    }   
                 }
             }
             Console.WriteLine($"\nThe animal cant eat that food. It's unacceptable for a {this.Species}.");
-            Console.Write("The disappointment made it worse because this");
+            Console.Write("The disappointment made it worse, because this");
         }
     }
 }

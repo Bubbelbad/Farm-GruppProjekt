@@ -38,7 +38,7 @@ namespace _2023._10._16
         }
 
 
-        public void ListAnimals() //Funktion som listar alla djur i animalList
+        public void ListAnimals() //Function to list all animals in listOfAnimals
         {
             if (animalList.Count == 0)
             {

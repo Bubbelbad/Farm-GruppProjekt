@@ -215,33 +215,40 @@ namespace _2023._10._16
                         case 5:
                             Console.Clear();
                             Console.WriteLine("List of existing species:\n");
+                            int count = 0;
                             foreach (Animal animal in listOfAnimals)
                             {
-                                Console.WriteLine("- " + animal.Species);
+                                Console.WriteLine($"{count}. " + animal.Species);
+                                count++;
                             }
-                            Console.WriteLine("What kind of animal do you want to feed?");  //To choose species of animal
-                            string species = Console.ReadLine();
+                            Console.WriteLine("\nWhat kind of animal do you want to feed?");  //To choose species of animal
+                            int species = int.Parse(Console.ReadLine());
+                            string species2 = "";
                             Animal animal2 = null;
                             Console.Clear();
-
-                            foreach (Animal animal in listOfAnimals)
+                            bool animalfeed = false;
+                            while (!animalfeed)
                             {
-                                if (animal.Species == species)
+                                for (int i = 0; i < listOfAnimals.Count; i++)
                                 {
-                                    Console.WriteLine("You have chosen an existing species.");
-                                    animal2 = animal;
+                                    if (listOfAnimals[i] == listOfAnimals[species])
+                                    {
+                                        Console.WriteLine("You have chosen an existing species.");
+                                        animal2 = listOfAnimals[i];
+                                        species2 = animal2.Species;
+                                        animalfeed = true;
+                                    }
                                 }
-                                else if (animal.Species != species)
-                                {
-                                    Console.WriteLine("Please choose an existing specie...");
-                                }
+                                Console.WriteLine("Please choose an existing animal with number");
                             }
+                            
 
                             Console.WriteLine("What kind of crop do you want to feed the animal? (Choose by name)\n"); //To choose crop type
                             foreach (Crop crop in cropList)
                             {
-                                    Console.WriteLine(crop.GetDescription());
+                                Console.WriteLine(crop.GetDescription());
                             }
+
                             int cropId = int.Parse(Console.ReadLine());
                             Crop crop1 = null;
                             foreach (Crop crop in cropList)
@@ -268,7 +275,7 @@ namespace _2023._10._16
                                     worker1 = worker;
                                 }
                             }
-                            FeedAnimals(species, worker1, crop1); //Actually feeding the animal
+                            FeedAnimals(species2, worker1, crop1); //Actually feeding the animal
                                 
                         break;
 
@@ -389,7 +396,7 @@ namespace _2023._10._16
             }
             else
             {
-                animal3.Feed(crop); Console.Write(" gets to live another day. Mediocre taste tho :|");
+                animal3.Feed(crop); Console.Write(" gets to live another day. \nMediocre taste tho :|");
             }
           
             Console.WriteLine("\n\nClick to continue...");

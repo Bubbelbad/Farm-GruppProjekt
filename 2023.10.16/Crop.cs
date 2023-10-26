@@ -28,19 +28,18 @@ namespace _2023._10._16
         {
            
                 quantity = quantity + cropQuantity;
-            
- 
+
+
         }
 
-
-        public bool TakeCrop(int num) 
+        public bool TakeCrop(int num) //<--- Jag tror att vi bara borde använda argumentet (int num) i TakeCrop()
         {
- 
-            
-            Console.WriteLine("This Crop exist");
-            Console.WriteLine("How much crop do you need?");
+
+
+            Console.WriteLine("This Crop exist");            //Och vi behöver nog inte fråga efter quantity
+            Console.WriteLine("How much crop do you need?"); //eftersom vi matar ett djur i taget. 
             num = int.Parse(Console.ReadLine());
-            if (num <= quantity) 
+            if (num <= quantity)
             {
                 Console.WriteLine("you get this much crop " + num);
                 return true;
@@ -52,7 +51,10 @@ namespace _2023._10._16
             }
             return true;
 
-           
+            //Egentligen räcker det nog med if(num <= quantity) return true;
+            //else { return false; } skulle jag tro. Men du får gärna säga vad du själv tror! 
+
+
         }
     }
 }
