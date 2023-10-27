@@ -73,29 +73,18 @@ namespace _2023._10._16
                     {
                         Console.WriteLine("Write id number of crop you want to remove: ");
                         int inputId = int.Parse(Console.ReadLine());
-                        foreach(Crop crop in listOfCrops)
-                        {
-                            if(inputId != crop.Id)
-                            {  
-                                Console.WriteLine("Crop with ID: " + inputId + " those not exist");
-                                Console.WriteLine("Press enter to continue...");
-                                Console.ReadLine();
-                                break;
-                            }
-                            else
-                            {
-                                RemoveCrop(inputId);
-                            }
-                        }
-                        break;
+                       
+                        RemoveCrop(inputId);
+ 
                     }
                     catch
                     {
                         Console.WriteLine("#ERROR# Write a number please");
                         Console.WriteLine("Press enter to continue...");
                         Console.ReadLine();
-                        break;
+                        
                     }
+                    break;
                     
                     
                 case "4":
@@ -121,9 +110,17 @@ namespace _2023._10._16
                 if (crop.Id == number)
                 {
                     listOfCrops.Remove(crop);
-                    Console.WriteLine("You have removed crop with id " + number);
+                    Console.WriteLine($"You have removed crop with id { number}");
+                    Console.ReadLine();
+                    return;
+                    
                 }
+                
             }
+            Console.WriteLine("Crop with ID: " + number + " those not exist");
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
+            return;
         }
         private void AddCrop(Worker worker)
         {
