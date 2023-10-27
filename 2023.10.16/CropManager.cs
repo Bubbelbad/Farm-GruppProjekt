@@ -58,6 +58,11 @@ namespace _2023._10._16
                         {
                             worker1 = worker;
                         }
+                        else if (idWorker != worker.Id)
+                        {
+                            Console.WriteLine("Worker with ID: " + " those not exist");
+                            
+                        }
 
                     }
                     AddCrop(worker1);
