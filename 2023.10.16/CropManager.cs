@@ -56,16 +56,23 @@ namespace _2023._10._16
                     {
                         if (worker.Id == idWorker)
                         {
+                            if (worker.Id != idWorker)
+                            {
+                                Console.WriteLine("Worker with ID: " + idWorker + " those not exist");
+                                Console.WriteLine("Press enter to continue...");
+                                Console.ReadLine();
+                                break;
+                            }
                             worker1 = worker;
+                            Console.WriteLine("You use worker with ID number: " + worker1.Id);
+                            AddCrop(worker1);
+                            Console.WriteLine("Crop was successfuli added to crop list");
+                            Console.WriteLine("Press enter to continue...");
+                            Console.ReadLine();
                         }
-                        else if (idWorker != worker.Id)
-                        {
-                            Console.WriteLine("Worker with ID: " + " those not exist");
-                            
-                        }
-
+                       
                     }
-                    AddCrop(worker1);
+                    
                     break;
                 case "3":
                     ViewCrops();
@@ -140,12 +147,16 @@ namespace _2023._10._16
                 else if (cropTyp == crop.CropTyp)
                 {
                     crop.AddCrop(cropQuantity);
+                    break;
                 }
                 else
                 {
                     listOfCrops.Add(new Crop(cropTyp, cropTyp, cropQuantity));
+                    break;
                 }
+               
             }
+            
         }
 
 
