@@ -68,15 +68,26 @@ namespace _2023._10._16
                     {
                         Console.WriteLine("Write id number of crop you want to remove: ");
                         int inputId = int.Parse(Console.ReadLine());
-                        removeCrop(inputId);
-                        
+                        foreach(Crop crop in listOfCrops)
+                        {
+                            if(inputId != crop.Id)
+                            {  
+                                Console.WriteLine("Crop with ID: " + inputId + " those not exist");
+                                Console.WriteLine("Press enter to continue...");
+                                Console.ReadLine();
+                                break;
+                            }
+                        }
                         break;
                     }
                     catch
                     {
-                        
+                        Console.WriteLine("#ERROR# Write a number please");
+                        Console.WriteLine("Press enter to continue...");
+                        Console.ReadLine();
+                        break;
                     }
-                    break;
+                    
                     
                 case "4":
 

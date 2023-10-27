@@ -41,7 +41,7 @@ namespace _2023._10._16
             }
             else if (num > quantity)
             {
-                Console.WriteLine(num + " this much crop thos not exist");
+                
                 return false;
             }
             return true;
