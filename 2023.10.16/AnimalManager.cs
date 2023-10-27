@@ -392,11 +392,11 @@ namespace _2023._10._16
             
             if (worker.Speciality == crop.CropTyp) //Checking if crop's the workers speciality to add a fitting end.
             {
-                animal3.Feed(crop); Console.Write(" was the workers speciality!");
+                animal3.Feed(crop); Console.Write(" The animal is happy because this was the workers speciality!");
             }
             else
             {
-                animal3.Feed(crop); Console.Write(" gets to live another day. \nMediocre taste tho :|");
+                animal3.Feed(crop); 
             }
           
             Console.WriteLine("\n\nClick to continue...");

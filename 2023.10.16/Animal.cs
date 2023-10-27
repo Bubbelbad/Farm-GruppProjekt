@@ -35,23 +35,28 @@ namespace _2023._10._16
         //Hur ska jag få med in hur många av crop jag ska skörda här? Eftersom jag bara har Crop i parametern. 
         //This is not done yet! To be continued.
 
-        public void Feed(Crop crop) //To feed Corpses to the Animal.
+        public void Feed(Crop crop) //To feed crop to the Animal.
         {
-            foreach (string food in AcceptableCropTypes)
+
+            bool cropStatus = crop.TakeCrop(1);
+            if (cropStatus && crop.CropTyp == AcceptableCropTypes[0] || cropStatus && crop.CropTyp == AcceptableCropTypes[1])
             {
-                if (crop.CropTyp == food)
-                {
-                    bool cropStatus = crop.TakeCrop(1);
-                    if (cropStatus)
-                    {
-                        Console.Clear();
-                        Console.Write("The animal ate the food and is happy because it");
-                        return; 
-                    }   
-                }
+                Console.Clear();
+                Console.Write("The animal ate the food.");
+                return;
             }
-            Console.WriteLine($"\nThe animal cant eat that food. It's unacceptable for a {this.Species}.");
-            Console.Write("The disappointment made it worse, because this");
+            else if (cropStatus && crop.CropTyp != AcceptableCropTypes[0] && cropStatus && crop.CropTyp != AcceptableCropTypes[1])
+            {
+                Console.WriteLine($"\nThe animal cant eat that food. It's unacceptable for a {this.Species}.");
+            }
+
+            else if (!cropStatus)
+            {
+                Console.WriteLine("There was no food to feed the animal :(");
+                return;
+            }
+           
+        
         }
     }
 }
