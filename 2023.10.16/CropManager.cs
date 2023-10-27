@@ -14,9 +14,9 @@ namespace _2023._10._16
         List<Crop> listOfCrops = new List<Crop>();
 
 
-        
 
-        public CropManager() 
+
+        public CropManager()
         {
             listOfCrops.Add(new Crop("Grass", "Grass", 500));
             listOfCrops.Add(new Crop("Leaves", "Leaves", 600));
@@ -25,7 +25,7 @@ namespace _2023._10._16
             listOfCrops.Add(new Crop("Coffee", "Coffee", 300));
         }
 
-       
+
         public void CropMany(List<Worker> workerList)
         {
             Console.WriteLine("Welcam to corp manager what do you like to do?");
@@ -38,13 +38,13 @@ namespace _2023._10._16
             {
                 case "1":
 
-                 viewCrops();
+                    ViewCrops();
                     Console.WriteLine("Click to continue...");
                     Console.ReadLine();
                     break;
 
                 case "2":
-                    foreach(Worker worker in workerList)
+                    foreach (Worker worker in workerList)
                     {
                         Console.WriteLine(worker.GetDescription());
                     }
@@ -54,47 +54,67 @@ namespace _2023._10._16
                     Worker worker1 = null;
                     foreach (Worker worker in workerList)
                     {
-                        if(worker.Id == idWorker)
+                        if (worker.Id == idWorker)
                         {
                             worker1 = worker;
+                        }
+                        else if (idWorker != worker.Id)
+                        {
+                            Console.WriteLine("Worker with ID: " + " those not exist");
+
                         }
 
                     }
                     AddCrop(worker1);
                     break;
                 case "3":
-                    viewCrops();
+                    ViewCrops();
                     try
                     {
                         Console.WriteLine("Write id number of crop you want to remove: ");
                         int inputId = int.Parse(Console.ReadLine());
-                        removeCrop(inputId);
-                        
+                        foreach (Crop crop in listOfCrops)
+                        {
+                            if (inputId != crop.Id)
+                            {
+                                Console.WriteLine("Crop with ID: " + inputId + " those not exist");
+                                Console.WriteLine("Press enter to continue...");
+                                Console.ReadLine();
+                                break;
+                            }
+                            else
+                            {
+                                RemoveCrop(inputId);
+                            }
+                        }
                         break;
                     }
                     catch
                     {
-                        
+                        Console.WriteLine("#ERROR# Write a number please");
+                        Console.WriteLine("Press enter to continue...");
+                        Console.ReadLine();
+                        break;
                     }
-                    break;
-                    
+
+
                 case "4":
 
-                break;
+                    break;
 
-                default: 
+                default:
                     Console.WriteLine("error");
-                break;
+                    break;
             }
         }
-        private void viewCrops()
+        private void ViewCrops()
         {
-            foreach(Crop crop in listOfCrops)
+            foreach (Crop crop in listOfCrops)
             {
                 Console.WriteLine(crop.GetDescription() + "\n");
             }
         }
-        private void removeCrop(int number)
+        private void RemoveCrop(int number)
         {
             foreach (Crop crop in listOfCrops)
             {
@@ -129,16 +149,13 @@ namespace _2023._10._16
                     listOfCrops.Add(new Crop(cropTyp, cropTyp, cropQuantity));
                 }
             }
-
-
         }
-         
-        
+
+
         public List<Crop> GetCrops()
         {
-            
             return listOfCrops;
         }
-        
+
     }
 }
