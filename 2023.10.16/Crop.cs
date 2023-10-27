@@ -41,6 +41,7 @@ namespace _2023._10._16
             }
             else if (num > quantity)
             {
+                
                 return false;
             }
             return true;

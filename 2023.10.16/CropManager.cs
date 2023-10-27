@@ -38,7 +38,7 @@ namespace _2023._10._16
             {
                 case "1":
 
-                    ViewCrops();
+                 ViewCrops();
                     Console.WriteLine("Click to continue...");
                     Console.ReadLine();
                     break;
@@ -61,7 +61,7 @@ namespace _2023._10._16
                         else if (idWorker != worker.Id)
                         {
                             Console.WriteLine("Worker with ID: " + " those not exist");
-
+                            
                         }
 
                     }
@@ -73,10 +73,10 @@ namespace _2023._10._16
                     {
                         Console.WriteLine("Write id number of crop you want to remove: ");
                         int inputId = int.Parse(Console.ReadLine());
-                        foreach (Crop crop in listOfCrops)
+                        foreach(Crop crop in listOfCrops)
                         {
-                            if (inputId != crop.Id)
-                            {
+                            if(inputId != crop.Id)
+                            {  
                                 Console.WriteLine("Crop with ID: " + inputId + " those not exist");
                                 Console.WriteLine("Press enter to continue...");
                                 Console.ReadLine();
@@ -96,8 +96,8 @@ namespace _2023._10._16
                         Console.ReadLine();
                         break;
                     }
-
-
+                    
+                    
                 case "4":
 
                     break;
@@ -153,7 +153,7 @@ namespace _2023._10._16
 
 
         public List<Crop> GetCrops()
-        {
+        {   
             return listOfCrops;
         }
 
