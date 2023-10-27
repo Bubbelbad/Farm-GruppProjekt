@@ -38,7 +38,7 @@ namespace _2023._10._16
             {
                 case "1":
 
-                 viewCrops();
+                 ViewCrops();
                     Console.WriteLine("Click to continue...");
                     Console.ReadLine();
                     break;
@@ -63,7 +63,7 @@ namespace _2023._10._16
                     AddCrop(worker1);
                     break;
                 case "3":
-                    viewCrops();
+                    ViewCrops();
                     try
                     {
                         Console.WriteLine("Write id number of crop you want to remove: ");
@@ -76,6 +76,10 @@ namespace _2023._10._16
                                 Console.WriteLine("Press enter to continue...");
                                 Console.ReadLine();
                                 break;
+                            }
+                            else
+                            {
+                                RemoveCrop(inputId);
                             }
                         }
                         break;
@@ -98,14 +102,14 @@ namespace _2023._10._16
                 break;
             }
         }
-        private void viewCrops()
+        private void ViewCrops()
         {
             foreach(Crop crop in listOfCrops)
             {
                 Console.WriteLine(crop.GetDescription() + "\n");
             }
         }
-        private void removeCrop(int number)
+        private void RemoveCrop(int number)
         {
             foreach (Crop crop in listOfCrops)
             {
@@ -140,14 +144,11 @@ namespace _2023._10._16
                     listOfCrops.Add(new Crop(cropTyp, cropTyp, cropQuantity));
                 }
             }
-
-
         }
          
         
         public List<Crop> GetCrops()
-        {
-            
+        {   
             return listOfCrops;
         }
         
