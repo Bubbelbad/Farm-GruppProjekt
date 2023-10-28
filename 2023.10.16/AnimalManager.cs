@@ -14,8 +14,6 @@ namespace _2023._10._16
       
         public AnimalManager()
         {
-            listOfAnimals.Add(new Animal("Cow", "Larsa", "Grass", "Leaves"));
-            listOfAnimals.Add(new Animal("Sheep", "Leroy", "Knuckles", "Beans"));
         }
 
 
