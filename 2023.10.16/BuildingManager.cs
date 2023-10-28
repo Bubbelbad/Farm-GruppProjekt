@@ -113,19 +113,33 @@ namespace _2023._10._16
         private void AddBuilding() //Function create and add building to the buildings list
         {
             Console.Clear();
-            Console.WriteLine("What is the name of the building you want to add?");
-            string name = Console.ReadLine();
-            Console.WriteLine("What is the capacity of the building?");
-            try
+            bool addStatus = true;
+            while (addStatus)
             {
-                int capacity = int.Parse(Console.ReadLine());
-                listOfFarmBuildings.Add(new FarmBuilding(capacity, name));
-                Console.WriteLine("\nClick to continue...");
-                Console.ReadLine();
-            }
-            catch
-            {
-                Console.WriteLine("Please write a number...");
+                Console.WriteLine("What is the name of the building you want to add?");
+                string name = Console.ReadLine();
+                Console.WriteLine("What is the capacity of the building?");
+                try
+                {
+                    int capacity = int.Parse(Console.ReadLine());
+                    if (name == "" && capacity == null)
+                    {
+                        Console.Clear();
+                        Console.WriteLine(">> Please fill out both fields\n");
+                    }
+                    else
+                    {
+                        listOfFarmBuildings.Add(new FarmBuilding(capacity, name));
+                        Console.WriteLine("\nClick to continue...");
+                        Console.ReadLine();
+                        addStatus = false;
+                    }
+                }
+                catch
+                {
+                    Console.Clear();
+                    Console.WriteLine(">> Please fill out both fields! \n");
+                }
             }
         }
 
