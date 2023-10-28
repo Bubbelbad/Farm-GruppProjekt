@@ -212,13 +212,24 @@ namespace _2023._10._16
                         //Function to feed an animal:
                         case 5:
                             Console.Clear();
-                            Console.WriteLine("List of existing species:\n");
-                            int count = 0;
-                            foreach (Animal animal in listOfAnimals)
+                            if (listOfAnimals.Count == 0)
                             {
-                                Console.WriteLine($"{count}. " + animal.Species);
-                                count++;
+                                Console.WriteLine(">> There are no animals to view - try adding some!\n");
+                                Console.WriteLine("Click to continue...");
+                                Console.ReadLine();
+                                break;
                             }
+                            else
+                            {
+                                Console.WriteLine("List of existing species:\n");
+                                int count = 0;
+                                foreach (Animal animal in listOfAnimals)
+                                {
+                                    Console.WriteLine($"{count}. " + animal.Species);
+                                    count++;
+                                }
+                            }
+                            
                             Console.WriteLine("\nWhat kind of animal do you want to feed?");  //To choose species of animal
                             int species = int.Parse(Console.ReadLine());
                             string species2 = "";
