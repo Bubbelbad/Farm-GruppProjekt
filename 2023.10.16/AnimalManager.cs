@@ -321,26 +321,43 @@ namespace _2023._10._16
 
         private bool AddAnimal(FarmBuilding farmbuilding)  //Function to add an animal to the list
         {
+            Console.Clear();
+            bool addStatus = false;
+            while (!addStatus)
+            {
+                Console.WriteLine("What species of animal do you want to add?");
+                string species = Console.ReadLine();
 
-            Console.WriteLine("What species of animal do you want to add?");
-            string species = Console.ReadLine();
+                Console.WriteLine("What is the animals name?");
+                string name = Console.ReadLine();
 
-            Console.WriteLine("What is the animals name?");
-            string name = Console.ReadLine();
+                Console.WriteLine("What is the animals favourite food?");
+                string food1 = Console.ReadLine();
 
-            Console.WriteLine("What is the animals favourite food?");
-            string food1 = Console.ReadLine();
+                Console.WriteLine("What is the animals second favourite food?");
+                string food2 = Console.ReadLine();
+                if (species == "" || name == "" || food1 == "" || food2 == "")
+                {
+                    Console.Clear();
+                    Console.WriteLine(">>> Please fill in all answers! \n");
+                }
+                else
+                {
+                    listOfAnimals.Add(new Animal(species, name, food1, food2));
+                    int index = listOfAnimals.Count - 1; //Finding the animal that was just added to listOfAnimals
+                    farmbuilding.AddAnimal(listOfAnimals[index]); //Adding it to the farmbuilding. 
+                    Console.Clear();
+                    Console.WriteLine($">> {name} the {species} has been added to farm with Id {farmbuilding.Id}\n");
+                    Console.WriteLine("Click to continue...");
+                    Console.ReadLine();
+                    addStatus = true;
+                }
 
-            Console.WriteLine("What is the animals second favourite food?");
-            string food2 = Console.ReadLine();
+            }
 
-            listOfAnimals.Add(new Animal(species, name, food1, food2));
-            int index = listOfAnimals.Count - 1; //Finding the animal that was just added to listOfAnimals
-            farmbuilding.AddAnimal(listOfAnimals[index]); //Adding it to the farmbuilding. 
+            
 
-            Console.WriteLine($"\n>> {name} has been added to farm with Id {farmbuilding.Id}\n");
-            Console.WriteLine("Click to continue...");
-            Console.ReadLine();
+            
 
             return true;
         }
