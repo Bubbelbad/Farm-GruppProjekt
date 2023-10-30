@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -113,9 +114,9 @@ namespace _2023._10._16
                                         {
                                             animalChoice = animal;
 
-                                            foreach (FarmBuilding building in farmList)           
-                                                                                                 
-                                                                                                 
+                                            foreach (FarmBuilding building in farmList)
+
+
                                             {
                                                 if (building.animalList.Contains(animalChoice))
                                                 {
@@ -157,32 +158,47 @@ namespace _2023._10._16
                                     Console.WriteLine("There is no farm with that Id...try again!");
                                 }
 
+                                if (animalChoice == null || newFarmChoice == null)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine(">> The chosen animal or farm does not exist. Please select again!\n");
+                                    Console.WriteLine("Click to continue...");
+                                    Console.ReadLine();
+                                    Console.Clear();
+                                }
+                                else
+                                {
+                                    status3 = true; //Here we know that we have successfully selected Animal and Farm. 
+                                    Console.Clear();
+                                }
 
-                                bool change = SwitchBuilding(animalChoice, newFarmChoice); //To do the deed, changing the building
+                            }
+                            bool status4 = false;
+                            while (!status4)
+                            {
+
+                                bool change = SwitchBuilding(animalChoice, newFarmChoice); //To do the deed, puting the animal into the new building  
                                 if (change)
                                 {
-                                    if (animalChoice == null || newFarmChoice == null)
-                                    {
-                                        Console.Clear();
-                                        Console.WriteLine(">> The chosen animal or farm does not exist. Please select again!\n");
-                                        Console.WriteLine("Click to continue...");
-                                        Console.ReadLine();
-                                        Console.Clear();
-                                    }
-                                    else if (change)
-                                    {
-                                        Console.WriteLine($"The desired animal of Id: {animalChoice.Id} has switched from building with Id: {oldFarm.Id} to the building of Id: {newFarmChoice.Id}\n");
-                                        Console.WriteLine("Click to continue...");
-                                        Console.ReadLine();
-                                        status3 = true;
-                                    }
-                                    else if (!change)
-                                    {
-                                        Console.WriteLine($"The farm with Id: {newFarmChoice.Id} is full\n" +
-                                                          $"Please remove relocate or remove animals before trying again.\n");
-                                        Console.WriteLine("Click to continue...");
-                                        Console.ReadLine();
-                                    }
+                                    Console.WriteLine($"The desired animal of Id: {animalChoice.Id} has switched from building with Id: {oldFarm.Id} to the building of Id: {newFarmChoice.Id}\n");
+                                    Console.WriteLine("Click to continue...");
+                                    Console.ReadLine();
+                                    status4 = true;
+                                }
+                                else if (change && oldFarm.Id == null)
+                                {
+                                    Console.WriteLine($"The desired animal of Id: {animalChoice.Id} went straight back to the same farm. Good job.\n");
+                                    Console.WriteLine("Click to continue...");
+                                    Console.ReadLine();
+                                    status4 = true;
+                                }
+                                else if (!change)
+                                {
+                                    Console.WriteLine($"The farm with Id: {newFarmChoice.Id} is full\n" +
+                                                      $"Please relocate, remove or choose another farm before trying again.\n");
+                                    Console.WriteLine("Click to continue...");
+                                    Console.ReadLine();
+                                    status4 = true;
                                 }
                             }
                              break;
