@@ -28,6 +28,7 @@ namespace _2023._10._16
 
         public void CropMany(List<Worker> workerList)
         {
+            Console.Clear();
             Console.WriteLine("Welcam to corp manager what do you like to do?");
             Console.WriteLine("Press 1 if you want to see all corps");
             Console.WriteLine("Press 2 if you want to add new corp");
@@ -38,41 +39,41 @@ namespace _2023._10._16
             {
                 case "1":
 
-                 ViewCrops();
+                    ViewCrops();
                     Console.WriteLine("Click to continue...");
                     Console.ReadLine();
                     break;
 
                 case "2":
+                    Console.WriteLine("Write a id number of worker you want to use");
                     foreach (Worker worker in workerList)
                     {
                         Console.WriteLine(worker.GetDescription());
                     }
-
-                    Console.WriteLine("Write a id number of worker you want to use");
                     int idWorker = int.Parse(Console.ReadLine());
                     Worker worker1 = null;
+                    bool exist = false;
                     foreach (Worker worker in workerList)
                     {
                         if (worker.Id == idWorker)
                         {
-                            if (worker.Id != idWorker)
-                            {
-                                Console.WriteLine("Worker with ID: " + idWorker + " those not exist");
-                                Console.WriteLine("Press enter to continue...");
-                                Console.ReadLine();
-                                break;
-                            }
                             worker1 = worker;
                             Console.WriteLine("You use worker with ID number: " + worker1.Id);
                             AddCrop(worker1);
                             Console.WriteLine("Crop was successfuli added to crop list");
                             Console.WriteLine("Press enter to continue...");
                             Console.ReadLine();
+                            exist = true;
                         }
-                       
                     }
-                    
+                    if (exist == false)
+                    {
+                        Console.WriteLine("Worker with ID: " + idWorker + " those not exist");
+                        Console.WriteLine("Press enter to continue...");
+                        Console.ReadLine();
+                        break;
+                    }
+
                     break;
                 case "3":
                     ViewCrops();
@@ -80,28 +81,29 @@ namespace _2023._10._16
                     {
                         Console.WriteLine("Write id number of crop you want to remove: ");
                         int inputId = int.Parse(Console.ReadLine());
-                       
+
                         RemoveCrop(inputId);
- 
+
                     }
                     catch
                     {
                         Console.WriteLine("#ERROR# Write a number please");
                         Console.WriteLine("Press enter to continue...");
                         Console.ReadLine();
-                        
+
                     }
                     break;
-                    
-                    
-                case "4":
 
+
+                case "4":
+                    
                     break;
 
                 default:
                     Console.WriteLine("error");
                     break;
             }
+          
         }
         private void ViewCrops()
         {
@@ -118,6 +120,7 @@ namespace _2023._10._16
                 {
                     listOfCrops.Remove(crop);
                     Console.WriteLine($"You have removed crop with id { number}");
+                    Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
                     return;
                     
@@ -135,28 +138,28 @@ namespace _2023._10._16
             string cropTyp = Console.ReadLine();
             Console.WriteLine("Write a quantity of crop");
             int cropQuantity = int.Parse(Console.ReadLine());
-
+            bool faund = false;
             foreach (Crop crop in listOfCrops)
             {
-                if (cropTyp == crop.CropTyp && worker.Speciality == cropTyp)
+                if (cropTyp == crop.CropTyp && worker.Speciality == crop.CropTyp)
                 {
 
                     crop.AddCrop(cropQuantity * 2);
-                    break;
+                    faund = true;
                 }
-                else if (cropTyp == crop.CropTyp)
+                else if (cropTyp == crop.CropTyp && worker.Speciality != crop.CropTyp)
                 {
                     crop.AddCrop(cropQuantity);
-                    break;
+                   faund= true;
                 }
-                else
-                {
-                    listOfCrops.Add(new Crop(cropTyp, cropTyp, cropQuantity));
-                    break;
-                }
-               
             }
-            
+            if (faund == false)
+            {
+                
+                listOfCrops.Add(new Crop(cropTyp, cropTyp, cropQuantity));
+
+            }
+
         }
 
 
