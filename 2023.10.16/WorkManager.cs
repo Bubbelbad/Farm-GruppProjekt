@@ -22,7 +22,7 @@ namespace _2023._10._16
         }
         public void WorkMany()
         {
-            
+            Console.Clear();
             Console.WriteLine("Welcam to work manager what do you like to do?");
             Console.WriteLine("Press 1 if you want to see all workers");
             Console.WriteLine("Press 2 if you want to add new worker");
@@ -33,29 +33,35 @@ namespace _2023._10._16
             switch (userInput)
             {
                 case "1":
+                    Console.Clear();
                     viewWorkers();
-                    Console.WriteLine("Click to continue...");
+                    Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
                     break;
                 case "2":
+                    Console.Clear();
                     addNewWorker();
                     
                     break;
-                case "3":  
-                  viewWorkers();
-                 
+                case "3":
+                    Console.Clear();
+                    viewWorkers();
+                  
                    try
                    {
-                        Console.WriteLine("Write id number of user you want to remove: ");
-                        int inputId = int.Parse(Console.ReadLine());
-                        removeWorker(inputId);
-                        WorkMany();
-                        break;
+                       Console.WriteLine("Write id number of worker you want to remove: ");
+                       int inputId = int.Parse(Console.ReadLine());
+                       removeWorker(inputId);
+                       break;
+                  
                    }
                    catch
                    {
-                        WorkMany();  
+                       Console.WriteLine("##ERROR## \n you have to write a number please!!!");
+                       Console.WriteLine("Press enter to continue...");
+                       Console.ReadLine();
                    }
+                     
                    
                 break;
                 case "4":
@@ -81,13 +87,25 @@ namespace _2023._10._16
             string name = Console.ReadLine();
             Console.WriteLine("Write speciality of new worker");
             string speciality = Console.ReadLine();
+            foreach(Worker worker in listOfWorkers)
+            {
+                if (speciality == worker.Speciality)
+                {
+                    Console.WriteLine("Worker with that speciality already exist");
+                    Console.WriteLine("Press enter to continue...");
+                    Console.ReadLine();
+                    return;
+                }
+            }
             listOfWorkers.Add(new Worker(name, speciality));
             Console.WriteLine("you added new worker!!!");
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
 
         } 
-        private int removeWorker(int num)
+        private void removeWorker(int num)
         {
-               
+            bool faund = false;  
             foreach (Worker worker in listOfWorkers)
             {
                 if (worker.Id == num)
@@ -95,18 +113,25 @@ namespace _2023._10._16
                    
                     listOfWorkers.Remove(worker);
                     Console.WriteLine("You have removed worker with Id " + num);
-
-
+                    Console.WriteLine("Press enter to continue...");
+                    Console.ReadLine();
+                    faund = true;
+                    return;
                 }
-               
             }
-            return num;
+            if (faund == false)
+            {
+                Console.WriteLine("Worker with id: " + num + " those not exist");
+                Console.WriteLine("Press enter to continue...");
+                Console.ReadLine();
+                return;
+            }
+            
         }
 
-        //Den här funktionen måste returnera listan!
+        
         public List<Worker> GetWorkers()
         {
-          
             return  listOfWorkers;
         }
     }

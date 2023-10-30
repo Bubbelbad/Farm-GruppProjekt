@@ -38,13 +38,14 @@ namespace _2023._10._16
             switch (userInput)
             {
                 case "1":
-
+                    Console.Clear();
                     ViewCrops();
                     Console.WriteLine("Click to continue...");
                     Console.ReadLine();
                     break;
 
                 case "2":
+                    Console.Clear();
                     Console.WriteLine("Write a id number of worker you want to use");
                     foreach (Worker worker in workerList)
                     {
@@ -76,6 +77,7 @@ namespace _2023._10._16
 
                     break;
                 case "3":
+                    Console.Clear();
                     ViewCrops();
                     try
                     {
@@ -93,12 +95,9 @@ namespace _2023._10._16
 
                     }
                     break;
-
-
                 case "4":
                     
                     break;
-
                 default:
                     Console.WriteLine("error");
                     break;
