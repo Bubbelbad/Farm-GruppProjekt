@@ -32,8 +32,6 @@ namespace _2023._10._16
 
 
 
-        //Hur ska jag få med in hur många av crop jag ska skörda här? Eftersom jag bara har Crop i parametern. 
-        //This is not done yet! To be continued.
 
         public void Feed(Crop crop) //To feed crop to the Animal.
         {

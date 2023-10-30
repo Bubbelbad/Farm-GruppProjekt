@@ -16,7 +16,6 @@ namespace _2023._10._16
         {
         }
 
-
         public void AnimalMenu(List<FarmBuilding> farmList, List<Worker> workerList, List<Crop> cropList)
         {
 
@@ -160,10 +159,20 @@ namespace _2023._10._16
                                 bool change = SwitchBuilding(animalChoice, newFarmChoice); //To do the deed, changing the building
                                 if (change)
                                 {
-                                    Console.WriteLine($"The desired animal of Id: {animalChoice.Id} has switched from building with Id: {oldFarm.Id} to the building of Id: {newFarmChoice.Id}\n");
-                                    Console.WriteLine("Click to continue...");
-                                    Console.ReadLine();
-                                    status3 = true;
+                                    if (animalChoice == null)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine(">> The chosen farm does not exist. Please select again!\n");
+                                        Console.WriteLine("Click to continue...");
+                                        Console.ReadLine();
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"The desired animal of Id: {animalChoice.Id} has switched from building with Id: {oldFarm.Id} to the building of Id: {newFarmChoice.Id}\n");
+                                        Console.WriteLine("Click to continue...");
+                                        Console.ReadLine();
+                                        status3 = true;
+                                    }
                                 }
                                 else if (!change)
                                 {
@@ -252,7 +261,7 @@ namespace _2023._10._16
                             }
                             
 
-                            Console.WriteLine("What kind of crop do you want to feed the animal? (Choose by name)\n"); //To choose crop type
+                            Console.WriteLine("What kind of crop do you want to feed the animal? (Choose by Id)\n"); //To choose crop type
                             foreach (Crop crop in cropList)
                             {
                                 Console.WriteLine(crop.GetDescription());
@@ -377,15 +386,26 @@ namespace _2023._10._16
                                                                               //byta byggnad och Id't från byggnaden djuret ska till.
         {
             Console.Clear();
-            if (!farmbuilding.IsFull())
+            if (farmbuilding == null)
             {
-                farmbuilding.AddAnimal(animal);
-                return true;
+                Console.WriteLine(">> The farm you choose doesnt exist. Please try again!\n" +
+                                  "Click to continue...");
+                Console.ReadLine();
+                return false;
             }
             else
             {
-                return false;
+                if (!farmbuilding.IsFull())
+                {
+                    farmbuilding.AddAnimal(animal);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
+            
         }
 
         

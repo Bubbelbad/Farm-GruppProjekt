@@ -32,6 +32,8 @@ namespace _2023._10._16
 
         }
 
+
+        //This returns true or false, depending if Crop exists in num value
         public bool TakeCrop(int num) 
         {
 
