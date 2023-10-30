@@ -295,6 +295,13 @@ namespace _2023._10._16
                                    
                                 }
                             }
+                            if (crop1 == null)
+                            {
+                                Console.Clear();
+                                Console.WriteLine(">> You need to select an existing crop from Id. Try again!");
+                                Console.ReadKey();
+                                break;
+                            }
 
                             Console.Clear();
                             Console.WriteLine("What worker should obey and feed the animal? (Choose by Id)\n"); //To choose worker
@@ -311,6 +318,14 @@ namespace _2023._10._16
                                     worker1 = worker;
                                 }
                             }
+                            if (worker1 == null)
+                            {
+                                Console.Clear();
+                                Console.WriteLine(">> You need to select a worker from Id. Try again!");
+                                Console.ReadKey();
+                                break;
+                            }
+
                             FeedAnimals(species2, worker1, crop1); //Actually feeding the animal
                                 
                         break;

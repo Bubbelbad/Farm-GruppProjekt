@@ -45,7 +45,7 @@ namespace _2023._10._16
             }
             else if (cropStatus && crop.CropTyp != AcceptableCropTypes[0] && cropStatus && crop.CropTyp != AcceptableCropTypes[1])
             {
-                Console.WriteLine($"\nThe animal cant eat that food. It's unacceptable for a {this.Species}!");
+                Console.WriteLine($"The animal cant eat that food. It's unacceptable for a {this.Species}!");
             }
 
             else if (!cropStatus) //In case we didnt have any crops
