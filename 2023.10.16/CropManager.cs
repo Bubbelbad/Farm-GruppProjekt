@@ -28,80 +28,86 @@ namespace _2023._10._16
 
         public void CropMany(List<Worker> workerList)
         {
-            Console.Clear();
-            Console.WriteLine("Welcam to corp manager what do you like to do?");
-            Console.WriteLine("Press 1 if you want to see all corps");
-            Console.WriteLine("Press 2 if you want to add new corp");
-            Console.WriteLine("Press 3 if you want to remov corp");
-            Console.WriteLine("press 4 if you want to go back to farm menu");
-            string userInput = Console.ReadLine();
-            switch (userInput)
+            bool quit = false;
+            while (quit == false)
             {
-                case "1":
-                    Console.Clear();
-                    ViewCrops();
-                    Console.WriteLine("Click to continue...");
-                    Console.ReadLine();
-                    break;
-
-                case "2":
-                    Console.Clear();
-                    Console.WriteLine("Write a id number of worker you want to use");
-                    foreach (Worker worker in workerList)
-                    {
-                        Console.WriteLine(worker.GetDescription());
-                    }
-                    int idWorker = int.Parse(Console.ReadLine());
-                    Worker worker1 = null;
-                    bool exist = false;
-                    foreach (Worker worker in workerList)
-                    {
-                        if (worker.Id == idWorker)
-                        {
-                            worker1 = worker;
-                            Console.WriteLine("You use worker with ID number: " + worker1.Id);
-                            AddCrop(worker1);
-                            Console.WriteLine("Crop was successfuli added to crop list");
-                            Console.WriteLine("Press enter to continue...");
-                            Console.ReadLine();
-                            exist = true;
-                        }
-                    }
-                    if (exist == false)
-                    {
-                        Console.WriteLine("Worker with ID: " + idWorker + " those not exist");
-                        Console.WriteLine("Press enter to continue...");
+                Console.Clear();
+                Console.WriteLine("Welcam to corp manager what do you like to do?");
+                Console.WriteLine("Press 1 if you want to see all corps");
+                Console.WriteLine("Press 2 if you want to add new corp");
+                Console.WriteLine("Press 3 if you want to remov corp");
+                Console.WriteLine("press 4 if you want to go back to farm menu");
+                string userInput = Console.ReadLine();
+                switch (userInput)
+                {
+                    case "1":
+                        Console.Clear();
+                        ViewCrops();
+                        Console.WriteLine("Click to continue...");
                         Console.ReadLine();
                         break;
-                    }
 
-                    break;
-                case "3":
-                    Console.Clear();
-                    ViewCrops();
-                    try
-                    {
-                        Console.WriteLine("Write id number of crop you want to remove: ");
-                        int inputId = int.Parse(Console.ReadLine());
+                    case "2":
+                        Console.Clear();
+                        Console.WriteLine("Write a id number of worker you want to use");
+                        foreach (Worker worker in workerList)
+                        {
+                            Console.WriteLine(worker.GetDescription());
+                        }
+                        int idWorker = int.Parse(Console.ReadLine());
+                        Worker worker1 = null;
+                        bool exist = false;
+                        foreach (Worker worker in workerList)
+                        {
+                            if (worker.Id == idWorker)
+                            {
+                                worker1 = worker;
+                                Console.WriteLine("You use worker with ID number: " + worker1.Id);
+                                AddCrop(worker1);
+                                Console.WriteLine("Crop was successfuli added to crop list");
+                                Console.WriteLine("Press enter to continue...");
+                                Console.ReadLine();
+                                exist = true;
+                            }
+                        }
+                        if (exist == false)
+                        {
+                            Console.WriteLine("Worker with ID: " + idWorker + " those not exist");
+                            Console.WriteLine("Press enter to continue...");
+                            Console.ReadLine();
+                            break;
+                        }
 
-                        RemoveCrop(inputId);
+                        break;
+                    case "3":
+                        Console.Clear();
+                        ViewCrops();
+                        try
+                        {
+                            Console.WriteLine("Write id number of crop you want to remove: ");
+                            int inputId = int.Parse(Console.ReadLine());
 
-                    }
-                    catch
-                    {
-                        Console.WriteLine("#ERROR# Write a number please");
-                        Console.WriteLine("Press enter to continue...");
-                        Console.ReadLine();
+                            RemoveCrop(inputId);
 
-                    }
-                    break;
-                case "4":
-                    
-                    break;
-                default:
-                    Console.WriteLine("error");
-                    break;
+                        }
+                        catch
+                        {
+                            Console.WriteLine("#ERROR# Write a number please");
+                            Console.WriteLine("Press enter to continue...");
+                            Console.ReadLine();
+
+                        }
+                        break;
+                    case "4":
+                        quit = true;
+                        break;
+                    default:
+                        Console.WriteLine("error");
+                        break;
+
+                }
             }
+
           
         }
         private void ViewCrops()

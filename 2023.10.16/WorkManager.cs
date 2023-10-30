@@ -22,55 +22,59 @@ namespace _2023._10._16
         }
         public void WorkMany()
         {
-            Console.Clear();
-            Console.WriteLine("Welcam to work manager what do you like to do?");
-            Console.WriteLine("Press 1 if you want to see all workers");
-            Console.WriteLine("Press 2 if you want to add new worker");
-            Console.WriteLine("Press 3 if you want to remov worker");
-            Console.WriteLine("press 4 if you want to go back to farm menu");
-            string userInput = Console.ReadLine();
-
-            switch (userInput)
+            bool quit = false;
+            while (quit == false)
             {
-                case "1":
-                    Console.Clear();
-                    viewWorkers();
-                    Console.WriteLine("Press enter to continue...");
-                    Console.ReadLine();
-                    break;
-                case "2":
-                    Console.Clear();
-                    addNewWorker();
-                    
-                    break;
-                case "3":
-                    Console.Clear();
-                    viewWorkers();
-                  
-                   try
-                   {
-                       Console.WriteLine("Write id number of worker you want to remove: ");
-                       int inputId = int.Parse(Console.ReadLine());
-                       removeWorker(inputId);
-                       break;
-                  
-                   }
-                   catch
-                   {
-                       Console.WriteLine("##ERROR## \n you have to write a number please!!!");
-                       Console.WriteLine("Press enter to continue...");
-                       Console.ReadLine();
-                   }
-                     
-                   
-                break;
-                case "4":
-                   
-                break;
-                default: 
-                    Console.WriteLine("error");
-                    break;
+                Console.Clear();
+                Console.WriteLine("Welcam to work manager what do you like to do?");
+                Console.WriteLine("Press 1 if you want to see all workers");
+                Console.WriteLine("Press 2 if you want to add new worker");
+                Console.WriteLine("Press 3 if you want to remov worker");
+                Console.WriteLine("press 4 if you want to go back to farm menu");
+                string userInput = Console.ReadLine();
 
+                switch (userInput)
+                {
+                    case "1":
+                        Console.Clear();
+                        viewWorkers();
+                        Console.WriteLine("Press enter to continue...");
+                        Console.ReadLine();
+                        break;
+                    case "2":
+                        Console.Clear();
+                        addNewWorker();
+
+                        break;
+                    case "3":
+                        Console.Clear();
+                        viewWorkers();
+
+                        try
+                        {
+                            Console.WriteLine("Write id number of worker you want to remove: ");
+                            int inputId = int.Parse(Console.ReadLine());
+                            removeWorker(inputId);
+                            break;
+
+                        }
+                        catch
+                        {
+                            Console.WriteLine("##ERROR## \n you have to write a number please!!!");
+                            Console.WriteLine("Press enter to continue...");
+                            Console.ReadLine();
+                        }
+
+
+                        break;
+                    case "4":
+                        quit = true;
+                        break;
+                    default:
+                        Console.WriteLine("error");
+                        break;
+
+                }
             }
             
         }
