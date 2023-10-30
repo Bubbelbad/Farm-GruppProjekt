@@ -435,14 +435,26 @@ namespace _2023._10._16
                    animal3 = animal;
                 }
             }
-            
+
             if (worker.Speciality == crop.CropTyp) //Checking if crop's the workers speciality to add a fitting end.
             {
-                animal3.Feed(crop); Console.Write(" The animal is happy because this was the workers speciality!");
+                Console.Clear();
+                bool fed = animal3.Feed(crop); 
+                if (fed)
+                {
+                    Console.Write(" The animal is happy because this was the workers speciality!");
+                }
+                    
             }
             else
             {
-                animal3.Feed(crop); 
+                Console.Clear();
+                bool fed = animal3.Feed(crop); 
+                if (fed)
+                {
+                    
+                    Console.WriteLine(" The animal gets to live another day. Meiocre taste though");
+                }
             }
           
             Console.WriteLine("\n\nClick to continue...");
