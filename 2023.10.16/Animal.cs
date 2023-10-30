@@ -36,7 +36,7 @@ namespace _2023._10._16
         public bool Feed(Crop crop) //To feed crop to the Animal.
         {
 
-            bool cropStatus = crop.TakeCrop(1);
+            bool cropStatus = crop.TakeCrop(1); //Checking if animal can eat the crop from AcceptableCropTypes 
             if (cropStatus && crop.CropTyp == AcceptableCropTypes[0] || cropStatus && crop.CropTyp == AcceptableCropTypes[1])
             {
                 Console.Clear();
@@ -48,7 +48,7 @@ namespace _2023._10._16
                 Console.WriteLine($"\nThe animal cant eat that food. It's unacceptable for a {this.Species}!");
             }
 
-            else if (!cropStatus)
+            else if (!cropStatus) //In case we didnt have any crops
             {
                 Console.WriteLine($"There was no food to feed the animal :(\nWe have run out of {crop.CropTyp}...");
             }

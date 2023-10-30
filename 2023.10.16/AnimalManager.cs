@@ -428,7 +428,7 @@ namespace _2023._10._16
         private void FeedAnimals(string species, Worker worker, Crop crop) //Function to feed the animals.
         {
             Animal animal3 = null;
-            foreach (Animal animal in listOfAnimals)
+            foreach (Animal animal in listOfAnimals) 
             {
                 if (animal.Species == species)
                 {
@@ -446,7 +446,7 @@ namespace _2023._10._16
                 }
                     
             }
-            else
+            else //If Feed returns true and the animal is fed, but doesnt really like it. 
             {
                 Console.Clear();
                 bool fed = animal3.Feed(crop); 
