@@ -64,14 +64,7 @@ namespace _2023._10._16
                                     Console.WriteLine("Click to continue...");
                                     Console.ReadLine();
                                 }
-                                else if (!building)
-                                {
-                                    Console.Clear();
-                                    Console.WriteLine($"The building with Id: {answer2} was not removed.\n" +
-                                          $"There are still animals in the building (!)\n");
-                                    Console.WriteLine("Click to continue...");
-                                    Console.ReadLine();
-                                }
+                                
                             }
                             catch
                             {
@@ -105,7 +98,7 @@ namespace _2023._10._16
             }
             if (listOfFarmBuildings.Count == 0)
             {
-                Console.WriteLine("There are not yet buildings to display\n");
+                Console.WriteLine(">> There are not yet buildings to display. Try adding some!");
             }
         }
 
@@ -146,27 +139,37 @@ namespace _2023._10._16
 
         private bool RemoveBuilding(int num)  //Function to remove building from list, but only if it's empty
         {
+            FarmBuilding choice = null;
             foreach (FarmBuilding building in listOfFarmBuildings)
             {
                 if (building.Id == num)
                 {
-
+                    choice = building;
                     bool status = building.IsEmpty(); //If building is empty, we remove
+
                     if (status)
                     {
                         listOfFarmBuildings.Remove(building);
                         return true;
                     }
-
-                    else  //If building is full, we do not remove.
-                    {
-                        return false;
-                    }
-
-                    
                 }
             }
-            return false;
+            if (choice == null)  //If building is full, we do not remove.
+            {
+                Console.Clear();
+                Console.WriteLine(">> This building does not exist, try again!");
+                Console.ReadKey();
+                return false;
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine($"The building with Id: {choice.Id} was not removed.\n" +
+                      $"There are still animals in the building (!)\n");
+                Console.WriteLine("Click to continue...");
+                Console.ReadLine();
+                return false;
+            }
         }
 
 
