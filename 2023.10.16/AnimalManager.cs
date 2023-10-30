@@ -471,7 +471,7 @@ namespace _2023._10._16
                 if (fed)
                 {
                     
-                    Console.WriteLine(" The animal gets to live another day. Meiocre taste though");
+                    Console.WriteLine(" The food tasted meiocre at best. The animal gets to live another day though!");
                 }
             }
           
