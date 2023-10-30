@@ -9,6 +9,7 @@ namespace _2023._10._16
 {
     internal class AnimalManager
     {
+
         List<Animal> listOfAnimals = new List<Animal>();
 
       
@@ -16,6 +17,7 @@ namespace _2023._10._16
         {
         }
 
+        //The main Animal Menu. Taking three lists as agument from other Manager classes
         public void AnimalMenu(List<FarmBuilding> farmList, List<Worker> workerList, List<Crop> cropList)
         {
 
@@ -159,28 +161,28 @@ namespace _2023._10._16
                                 bool change = SwitchBuilding(animalChoice, newFarmChoice); //To do the deed, changing the building
                                 if (change)
                                 {
-                                    if (animalChoice == null)
+                                    if (animalChoice == null || newFarmChoice == null)
                                     {
                                         Console.Clear();
-                                        Console.WriteLine(">> The chosen farm does not exist. Please select again!\n");
+                                        Console.WriteLine(">> The chosen animal or farm does not exist. Please select again!\n");
                                         Console.WriteLine("Click to continue...");
                                         Console.ReadLine();
+                                        Console.Clear();
                                     }
-                                    else
+                                    else if (change)
                                     {
                                         Console.WriteLine($"The desired animal of Id: {animalChoice.Id} has switched from building with Id: {oldFarm.Id} to the building of Id: {newFarmChoice.Id}\n");
                                         Console.WriteLine("Click to continue...");
                                         Console.ReadLine();
                                         status3 = true;
                                     }
-                                }
-                                else if (!change)
-                                {
-                                    Console.WriteLine($"The farm with Id: {newFarmChoice.Id} is full\n" +
-                                                      $"Please remove relocate or remove animals before trying again.\n");
-                                    Console.WriteLine("Click to continue...");
-                                    Console.ReadLine();
-                                    status3 = true;
+                                    else if (!change)
+                                    {
+                                        Console.WriteLine($"The farm with Id: {newFarmChoice.Id} is full\n" +
+                                                          $"Please remove relocate or remove animals before trying again.\n");
+                                        Console.WriteLine("Click to continue...");
+                                        Console.ReadLine();
+                                    }
                                 }
                             }
                              break;

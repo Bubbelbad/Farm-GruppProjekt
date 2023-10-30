@@ -101,7 +101,7 @@ namespace _2023._10._16
         {
             foreach (FarmBuilding building in listOfFarmBuildings)
             {
-                Console.WriteLine(building.GetDescription() + "\n");
+                Console.WriteLine(building.GetDescription());
             }
             if (listOfFarmBuildings.Count == 0)
             {
