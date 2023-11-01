@@ -18,7 +18,7 @@ namespace _2023._10._16
         }
         public override string GetDescription()
         {
-            return $"Id: {Id} crop: {CropTyp} quantity: {quantity}";
+            return $"Id: {Id} Name: {this.Name}\nType: {CropTyp}\nQuantity: {quantity}";
         }
 
         

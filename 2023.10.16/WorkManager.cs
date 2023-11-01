@@ -14,10 +14,10 @@ namespace _2023._10._16
         public List<Worker> listOfWorkers = new List<Worker>();
         public WorkManager() 
         {
-            listOfWorkers.Add(new Worker("Branislav", "Grass"));
-            listOfWorkers.Add(new Worker("Viktor", "Leaves"));
-            listOfWorkers.Add(new Worker("Niklas", "Potatoes"));
-            listOfWorkers.Add(new Worker("Bob", "Cheeseballs"));
+            listOfWorkers.Add(new Worker("Branislav", "Greens"));
+            listOfWorkers.Add(new Worker("Viktor", "Snacks"));
+            listOfWorkers.Add(new Worker("Niklas", "Seeds"));
+            listOfWorkers.Add(new Worker("Bob", "Greens"));
 
         }
         public void WorkMany()

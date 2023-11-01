@@ -269,20 +269,19 @@ namespace _2023._10._16
                                 {
                                     if (listOfAnimals[i] == listOfAnimals[species])
                                     {
-                                        Console.WriteLine("You have chosen an existing species.");
                                         animal2 = listOfAnimals[i];
                                         species2 = animal2.Species;
                                         animalfeed = true;
+                                        break;
                                     }
                                 }
-                                Console.WriteLine("Please choose an existing animal with number");
                             }
                             
 
                             Console.WriteLine("What kind of crop do you want to feed the animal? (Choose by Id)\n"); //To choose crop type
                             foreach (Crop crop in cropList)
                             {
-                                Console.WriteLine(crop.GetDescription());
+                                Console.WriteLine(crop.GetDescription() + "\n");
                             }
 
                             int cropId = int.Parse(Console.ReadLine());
@@ -444,15 +443,23 @@ namespace _2023._10._16
         
         private void RemoveAnimal(int num) //Function to remove an animal 
         {
-            foreach (Animal animal in listOfAnimals)
+            try
             {
-                if (animal.Id == num)
+                foreach (Animal animal in listOfAnimals)
                 {
-                    listOfAnimals.Remove(animal);
-                    Console.WriteLine("The animal was removed.");
-                    Console.WriteLine("Click to continue...");
-                    Console.ReadLine();
+                    if (animal.Id == num)
+                    {
+                        listOfAnimals.Remove(animal);
+                        Console.WriteLine("The animal was removed.");
+                        Console.WriteLine("Click to continue...");
+                        Console.ReadLine();
+                    }
                 }
+            }
+            catch
+            {
+                Console.WriteLine("Please choose animal by index");
+                Console.ReadKey();
             }
 
         }
@@ -486,7 +493,7 @@ namespace _2023._10._16
                 if (fed)
                 {
                     
-                    Console.WriteLine(" The food tasted meiocre at best. The animal gets to live another day though!");
+                    Console.WriteLine(" The food tasted meiocre at best. \nThe animal gets to live another day though!");
                 }
             }
           
